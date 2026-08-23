@@ -9,11 +9,11 @@ import { site } from "@/lib/site";
  * the visitor is, and a stale "Open now" is worse than a beat of nothing.
  */
 export function OpenStatus({
-  dotClass,
-  dotShutClass,
+  dotClass = "",
+  dotShutClass = "",
 }: {
-  dotClass: string;
-  dotShutClass: string;
+  dotClass?: string;
+  dotShutClass?: string;
 }) {
   const [state, setState] = useState<ReturnType<typeof openState> | null>(null);
 

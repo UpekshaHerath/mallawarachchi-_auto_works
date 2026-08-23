@@ -21,8 +21,30 @@ const GEN = path.join(process.cwd(), "lib", "generated");
 
 /** name -> source file. Landscape 3:2 unless `ratio` says otherwise. */
 const SET = [
-  { name: "hero", file: "p21.jpg", ratio: 16 / 9, widths: [640, 1024, 1600], quality: 42 },
-  { name: "master-at-work", file: "p20.jpg", ratio: 4 / 3, widths: [480, 800, 1200] },
+  // The hero is art-directed rather than one crop stretched to fit: a wide
+  // frame for landscape viewports and a tall one for phones, both cut from
+  // the same 1600x1200 photo by hand so the mechanic and the lit engine bay
+  // survive either shape. `region` is in source pixels, applied before resize.
+  {
+    name: "hero",
+    file: "p20.jpg",
+    ratio: 16 / 9,
+    widths: [768, 1152, 1400],
+    quality: 46,
+    region: { left: 200, top: 90, width: 1400, height: 787 },
+  },
+  {
+    // Narrower than 3:4 on purpose: a full-height phone hero is roughly 0.46
+    // wide-to-tall, so anything squarer just gets its sides cropped off again
+    // by object-fit. 0.6 keeps the mechanic, his hands and the lit bay.
+    name: "hero-portrait",
+    file: "p20.jpg",
+    ratio: 0.6,
+    widths: [480, 720, 900],
+    quality: 46,
+    region: { left: 200, top: 0, width: 720, height: 1200 },
+  },
+  { name: "master-at-work", file: "p17.jpg", ratio: 4 / 3, widths: [480, 800, 1200] },
   { name: "yard-wide", file: "p01.jpg", ratio: 2 / 1, widths: [640, 1280] },
 
   // service cards (4:3)
@@ -37,11 +59,11 @@ const SET = [
 
   // gallery
   { name: "g-01", file: "p05.jpg" },
-  { name: "g-02", file: "p20.jpg" },
+  { name: "g-02", file: "p03.jpg" },
   { name: "g-03", file: "p02.jpg" },
   { name: "g-04", file: "p04.jpg" },
   { name: "g-05", file: "p10.jpg" },
-  { name: "g-06", file: "p17.jpg" },
+  { name: "g-06", file: "p20.jpg" },
   { name: "g-07", file: "p13.jpg" },
   { name: "g-08", file: "p24.jpg" },
   { name: "g-09", file: "p26.jpg" },
@@ -74,9 +96,19 @@ for (const item of SET) {
   const widths = item.widths ?? DEFAULT_WIDTHS;
   const largest = widths[widths.length - 1];
 
+  // A hand-picked region beats `position: "attention"`, which optimises for
+  // edge energy and happily crops a face out of frame.
+  const cut = () => {
+    const pipe = sharp(src).rotate();
+    return item.region ? pipe.extract(item.region) : pipe;
+  };
+  const fit = item.region
+    ? { fit: "cover" }
+    : { fit: "cover", position: "attention" };
+
   for (const w of widths) {
     const h = Math.round(w / ratio);
-    const base = sharp(src).rotate().resize(w, h, { fit: "cover", position: "attention" });
+    const base = cut().resize(w, h, fit);
     await base.clone().avif({ quality: item.quality ?? 48, effort: 7 }).toFile(path.join(OUT, `${item.name}-${w}.avif`));
     await base.clone().webp({ quality: item.quality ? item.quality + 20 : 74 }).toFile(path.join(OUT, `${item.name}-${w}.webp`));
     await base
@@ -86,9 +118,8 @@ for (const item of SET) {
   }
 
   // 20px-wide blurred placeholder, inlined as a data URI
-  const lqip = await sharp(src)
-    .rotate()
-    .resize(20, Math.max(1, Math.round(20 / ratio)), { fit: "cover", position: "attention" })
+  const lqip = await cut()
+    .resize(20, Math.max(1, Math.round(20 / ratio)), fit)
     .blur(1.2)
     .webp({ quality: 30 })
     .toBuffer();

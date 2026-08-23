@@ -321,11 +321,11 @@ export const reviews: {
 
 export const galleryImages: { name: MediaName; alt: Bi }[] = [
   { name: "g-01", alt: { en: "A car up on the two-post lift being worked on", si: "Two-post lift එකේ නංවලා වැඩ කරන car එකක්" } },
-  { name: "g-02", alt: { en: "Master mechanic working inside an engine bay", si: "Engine bay එක ඇතුළේ වැඩ කරන ප්‍රධාන mechanic" } },
+  { name: "g-02", alt: { en: "Car raised on the lift for underbody and suspension work", si: "යටි සහ suspension වැඩට lift එකේ නංවපු car එකක්" } },
   { name: "g-03", alt: { en: "Van raised with wheels off for brake and suspension work", si: "Brake සහ suspension වැඩට wheel ගලවලා නංවපු van එකක්" } },
   { name: "g-04", alt: { en: "SUV lifted for underbody inspection", si: "යටින් බලන්න නංවපු SUV එකක්" } },
   { name: "g-05", alt: { en: "Underbody view of a vehicle on the lift", si: "Lift එකේ තියෙන වාහනයක යට පැත්ත" } },
-  { name: "g-06", alt: { en: "Hydraulic press work in the workshop", si: "වැඩපොළේ hydraulic press වැඩ" } },
+  { name: "g-06", alt: { en: "Master mechanic working inside an engine bay", si: "Engine bay එක ඇතුළේ වැඩ කරන ප්‍රධාන mechanic" } },
   { name: "g-07", alt: { en: "Toyota Hiace van in the repair bay", si: "Repair bay එකේ Toyota Hiace van එකක්" } },
   { name: "g-08", alt: { en: "Engine internals exposed during an overhaul", si: "Overhaul එකකදී විවෘත කරපු engine එකේ ඇතුළ" } },
   { name: "g-09", alt: { en: "Injector rail and cylinder head close-up", si: "Injector rail සහ cylinder head එක ළඟින්" } },

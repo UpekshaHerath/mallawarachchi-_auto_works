@@ -43,7 +43,7 @@ export function buildJsonLd() {
     hasMap: site.maps.place,
     sameAs: site.sameAs,
     image: [
-      abs("/img/hero-1600.jpg"),
+      abs("/img/hero-1400.jpg"),
       abs("/img/master-at-work-1200.jpg"),
       abs("/img/g-12-1100.jpg"),
     ],
@@ -122,7 +122,7 @@ export function buildJsonLd() {
     name: "Vehicle Repairs in Ganemulla, Gampaha — Mallawaarachchi Auto Works",
     isPartOf: { "@id": id("website") },
     about: { "@id": id("workshop") },
-    primaryImageOfPage: abs("/img/hero-1600.jpg"),
+    primaryImageOfPage: abs("/img/hero-1400.jpg"),
     inLanguage: "en",
   };
 

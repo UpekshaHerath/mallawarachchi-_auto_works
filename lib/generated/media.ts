@@ -10,14 +10,25 @@ export type MediaEntry = {
 export const media = {
   "hero": {
     "widths": [
-      640,
-      1024,
-      1600
+      768,
+      1152,
+      1400
     ],
     "ratio": 1.7778,
-    "width": 1600,
-    "height": 900,
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACwAwCdASoUAAsAPxF0tFEsJqUisAgBgCIJQBOgBAzedPgl9jCwAAD+s65zQER4wCh5KPXy181wMhCtVdm7RieYRc3n8Cm3kb8mJZf45gjHrfgogAA="
+    "width": 1400,
+    "height": 788,
+    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwBACdASoUAAsAPxF0slCsJqSisAgBgCIJZwAAYaU7CLXWxAIBEz0KSQAA/AR3BVnVqfvFuFVeQnuLumk1GwytOnawA+5DYlELlhAA"
+  },
+  "hero-portrait": {
+    "widths": [
+      480,
+      720,
+      900
+    ],
+    "ratio": 0.6,
+    "width": 900,
+    "height": 1500,
+    "lqip": "data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAADwBQCdASoUACEAPvFcplAppSOiurzIATAeCUAYdYSLn923nUyg4ZAUxYm/ax2BZN4zdc/WyKDXoAD+ByUe+CD89A+JYl18hGfOPkLbkWp2qaaxxzARHrC6M6oPaghhVFdSzFgmpalzgJl7kB1z2uVgxAs2kN7vatfZ74m1Yup2pCGq2Qs3iD9ZuNRRLorq8CT0O6/PyAaRgAAA"
   },
   "master-at-work": {
     "widths": [
@@ -28,7 +39,7 @@ export const media = {
     "ratio": 1.3333,
     "width": 1200,
     "height": 900,
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABwAwCdASoUAA8APxFysVAsJqSisAgBgCIJZwAALDPqZLf5zXAA/mCu4RmHGfZQCotpAG1ze2jHanOvXLGeQ6md0QSFnrCJ7HObpQz+S120h/lQAAA="
+    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAwCdASoUAA8APxFysFAsJqSisAgBgCIJYwC2yBQ7gefkZ+DZE1gA37GT8BmSbbCdi2NpynkuwVFk4xdBuM/cL2kaF29xXuSbW4AA"
   },
   "yard-wide": {
     "widths": [
@@ -148,7 +159,7 @@ export const media = {
     "ratio": 1.3333,
     "width": 1100,
     "height": 825,
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABwAwCdASoUAA8APxFysVAsJqSisAgBgCIJZwAALDPqZLf5zXAA/mCu4RmHGfZQCotpAG1ze2jHanOvXLGeQ6md0QSFnrCJ7HObpQz+S120h/lQAAA="
+    "lqip": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACQAwCdASoUAA8APxFysFAsJqSisAgBgCIJZQCzgBuF1xTfXVqoAN1z3olJ0+fedKvIZx9Mdl23l2q/OKJYAAAA"
   },
   "g-03": {
     "widths": [
@@ -192,7 +203,7 @@ export const media = {
     "ratio": 1.3333,
     "width": 1100,
     "height": 825,
-    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAwCdASoUAA8APxFysFAsJqSisAgBgCIJYwC2yBQ7gefkZ+DZE1gA37GT8BmSbbCdi2NpynkuwVFk4xdBuM/cL2kaF29xXuSbW4AA"
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABwAwCdASoUAA8APxFysVAsJqSisAgBgCIJZwAALDPqZLf5zXAA/mCu4RmHGfZQCotpAG1ze2jHanOvXLGeQ6md0QSFnrCJ7HObpQz+S120h/lQAAA="
   },
   "g-07": {
     "widths": [

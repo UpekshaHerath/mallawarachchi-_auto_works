@@ -36,7 +36,7 @@ export function Workshop() {
             <div className={`${s.fig} grain`}>
               <Media
                 name="master-at-work"
-                alt="A senior mechanic working inside an engine bay at the Ganemulla workshop"
+                alt="Press work under way at the Ganemulla workshop bench"
                 sizes="(min-width: 900px) 44vw, 92vw"
               />
             </div>

@@ -10,10 +10,10 @@ export function Hero() {
       <div className={s.bg}>
         <Media
           name="hero"
-          alt="A van up on the two-post lift at Mallawaarachchi Auto Works, Ganemulla"
+          portrait="hero-portrait"
+          alt="A mechanic at Mallawaarachchi Auto Works working inside an engine bay, tool wall behind him"
           sizes="100vw"
           priority
-          position="55% 45%"
         />
       </div>
       <div className={s.scrim} />

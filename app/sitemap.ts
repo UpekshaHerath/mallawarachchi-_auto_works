@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
       images: [
-        `${url}/img/hero-1600.jpg`,
+        `${url}/img/hero-1400.jpg`,
         `${url}/img/master-at-work-1200.jpg`,
         `${url}/img/yard-wide-1280.jpg`,
         `${url}/img/svc-engine-1100.jpg`,

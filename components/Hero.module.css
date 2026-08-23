@@ -23,7 +23,12 @@
 }
 .bg img {
   animation: kenburns 26s var(--ease-out) 0.4s both;
-  filter: saturate(0.82) contrast(1.05);
+  filter: saturate(0.95) contrast(1.04) brightness(1.08);
+}
+@media (min-width: 768px) {
+  .bg img {
+    filter: saturate(0.95) contrast(1.04);
+  }
 }
 @keyframes kenburns {
   from {
@@ -34,13 +39,49 @@
   }
 }
 
+/*
+ * Three passes, because one flat overlay either loses the photo or loses the
+ * text. Phones get a mostly-vertical wash (the copy runs the full width);
+ * landscape adds a left-hand column so the headline always sits on something
+ * dark while the lit engine bay on the right stays clear.
+ */
 .scrim {
   position: absolute;
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(180deg, rgba(6, 7, 10, 0.86) 0%, rgba(6, 7, 10, 0.3) 34%, rgba(6, 7, 10, 0.94) 88%),
-    radial-gradient(90% 65% at 78% 22%, var(--amber-glow), transparent 62%);
+    linear-gradient(
+      180deg,
+      rgba(6, 7, 10, 0.8) 0%,
+      rgba(6, 7, 10, 0.34) 18%,
+      /* the headline band: the amber accent line sits here and the engine bay
+         behind it is also amber, so it needs its own separation */
+      rgba(6, 7, 10, 0.62) 40%,
+      rgba(6, 7, 10, 0.58) 62%,
+      rgba(6, 7, 10, 0.95) 92%
+    ),
+    radial-gradient(70% 45% at 58% 72%, var(--amber-glow), transparent 62%);
+}
+
+@media (min-width: 768px) {
+  .scrim {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(6, 7, 10, 0.94) 0%,
+        rgba(6, 7, 10, 0.78) 32%,
+        rgba(6, 7, 10, 0.24) 62%,
+        rgba(6, 7, 10, 0.5) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(6, 7, 10, 0.72) 0%,
+        rgba(6, 7, 10, 0.12) 30%,
+        rgba(6, 7, 10, 0.55) 72%,
+        rgba(6, 7, 10, 0.92) 100%
+      ),
+      radial-gradient(60% 60% at 74% 34%, var(--amber-glow), transparent 62%);
+  }
 }
 .vign {
   position: absolute;

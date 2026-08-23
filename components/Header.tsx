@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LogoLockup } from "./Logo";
+import { OpenStatus } from "./OpenStatus";
 import { site } from "@/lib/site";
-import { PhoneIcon } from "./icons";
+import { PhoneIcon, PinIcon } from "./icons";
 import s from "./Header.module.css";
 
 const NAV = [
@@ -19,6 +20,8 @@ export function Header() {
   const [stuck, setStuck] = useState(false);
   const [open, setOpen] = useState(false);
   const [lang, setLang] = useState<"en" | "si">("en");
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const sheetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const current = document.documentElement.getAttribute("data-lang");
@@ -34,6 +37,21 @@ export function Header() {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // Escape closes the sheet, and focus moves into it on open / back to the
+  // button on close, so the menu is usable without a pointer.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    sheetRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      burgerRef.current?.focus();
     };
   }, [open]);
 
@@ -91,6 +109,7 @@ export function Header() {
             </a>
 
             <button
+              ref={burgerRef}
               type="button"
               className={`${s.burger} ${open ? s.open : ""}`}
               aria-expanded={open}
@@ -107,16 +126,18 @@ export function Header() {
       </header>
 
       <div
+        ref={sheetRef}
         id="menu-sheet"
         className={`${s.sheet} ${open ? s.sheetOpen : ""}`}
         aria-hidden={!open}
         inert={!open}
       >
-        {NAV.map((n) => (
+        {NAV.map((n, i) => (
           <a
             key={n.href}
             href={n.href}
             className={s.sheetLink}
+            style={{ ["--i" as string]: i }}
             onClick={() => setOpen(false)}
           >
             <span className={s.sheetNo}>{n.no}</span>
@@ -132,6 +153,27 @@ export function Header() {
           <a className="btn btn--ghost" href={`tel:${site.phones[1].e164}`}>
             <PhoneIcon />
             {site.phones[1].label}
+          </a>
+        </div>
+
+        <div className={s.sheetMeta}>
+          <span className={s.sheetStatus}>
+            <OpenStatus dotClass={s.dot} dotShutClass={s.dotShut} />
+          </span>
+          <span>
+            <span className="en">Mon &ndash; Sat &middot; 8.30 AM &ndash; 5.00 PM</span>
+            <span className="si">සඳුදා &ndash; සෙනසුරාදා &middot; පෙ.ව 8.30 &ndash; ප.ව 5.00</span>
+          </span>
+          <a
+            href={site.maps.directions}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <PinIcon size={15} />{" "}
+            <span className="en">{site.address.line1}, {site.address.city}</span>
+            <span className="si">
+              {site.address.si.line1}, {site.address.si.city}
+            </span>
           </a>
         </div>
       </div>

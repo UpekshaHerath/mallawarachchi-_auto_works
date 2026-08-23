@@ -3,8 +3,14 @@
   align-items: center;
   gap: 0.8rem;
 }
+/* On a 320px phone the fixed-size lockup plus the actions overflowed the bar.
+   Everything in the compact variant scales with the viewport instead. */
 .lockupCompact {
-  gap: 0.6rem;
+  gap: clamp(0.4rem, 2vw, 0.6rem);
+}
+.lockupCompact .mark {
+  width: clamp(28px, 8.5vw, 36px);
+  height: clamp(28px, 8.5vw, 36px);
 }
 
 .mark {
@@ -42,7 +48,7 @@ a:focus-visible .mark .gear {
   white-space: nowrap;
 }
 .nameCompact {
-  font-size: 1.04rem;
+  font-size: clamp(0.8rem, 3.3vw, 1.04rem);
 }
 
 .sub {
@@ -60,8 +66,8 @@ a:focus-visible .mark .gear {
   white-space: nowrap;
 }
 .subCompact {
-  font-size: 0.62rem;
-  letter-spacing: 0.34em;
+  font-size: clamp(0.5rem, 1.8vw, 0.62rem);
+  letter-spacing: clamp(0.14em, 1vw, 0.34em);
 }
 /* rule fills whatever is left, so the second line always ends flush with the
    name above it however wide the name renders */
