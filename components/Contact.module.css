@@ -1,0 +1,153 @@
+.shell {
+  position: relative;
+  background: var(--ink);
+  border-top: 1px solid var(--hairline-soft);
+}
+
+.row {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.pitch {
+  display: grid;
+  gap: 1.1rem;
+}
+.pitch h2 {
+  margin: 0;
+}
+.pitch p {
+  color: var(--paper-dim);
+  max-width: 50ch;
+}
+.callOut {
+  display: grid;
+  gap: 0.6rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--amber);
+  background: rgba(255, 193, 14, 0.04);
+}
+.callOutTitle {
+  font-family: var(--f-display);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--amber);
+}
+:global([data-lang="si"]) .callOutTitle {
+  font-family: var(--f-si-display);
+  font-size: 0.95rem;
+}
+.callOut p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* --- job card form --- */
+.card {
+  background: var(--steel);
+  border: 1px solid var(--hairline);
+  position: relative;
+}
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--amber);
+  color: #0a0a0a;
+  font-family: var(--f-display);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+:global([data-lang="si"]) .cardHead {
+  font-family: var(--f-si-display);
+}
+.cardHead span:last-child {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+.form {
+  padding: 1.35rem 1.25rem 1.5rem;
+  display: grid;
+  gap: 1.05rem;
+}
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+.fLabel {
+  font-family: var(--f-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+:global([data-lang="si"]) .fLabel {
+  font-family: var(--f-si-display);
+  letter-spacing: 0.02em;
+  font-size: 0.85rem;
+}
+.input,
+.textarea,
+.select {
+  width: 100%;
+  background: var(--oil);
+  border: 1px solid var(--hairline);
+  padding: 0.7rem 0.85rem;
+  color: var(--paper);
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: var(--amber);
+  outline: none;
+}
+.textarea {
+  resize: vertical;
+  min-height: 6.5rem;
+  line-height: 1.55;
+}
+.two {
+  display: grid;
+  gap: 1.05rem;
+}
+.actions {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+.small {
+  font-size: 0.8rem;
+  color: var(--muted-2);
+  line-height: 1.5;
+}
+.err {
+  color: #ff8a6a;
+  font-size: 0.84rem;
+}
+
+@media (min-width: 560px) {
+  .two {
+    grid-template-columns: 1fr 1fr;
+  }
+  .actions {
+    grid-auto-flow: column;
+    justify-content: start;
+  }
+}
+@media (min-width: 940px) {
+  .row {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+}

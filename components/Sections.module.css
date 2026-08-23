@@ -1,0 +1,290 @@
+/* Shared section furniture: heads, marquee, panels. */
+
+.head {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  max-width: 62ch;
+}
+.head h2 {
+  margin: 0;
+}
+.headNote {
+  color: var(--muted);
+  max-width: 56ch;
+}
+.headWide {
+  max-width: none;
+}
+
+/* ---------------- marquee ---------------- */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  background: var(--amber);
+  color: #0a0a0a;
+  border-block: 2px solid #0a0a0a;
+  padding-block: 0.6rem;
+  user-select: none;
+}
+.track {
+  display: flex;
+  width: max-content;
+  animation: slide 42s linear infinite;
+}
+.track > span {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-inline: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+  white-space: nowrap;
+}
+.track > span::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #0a0a0a;
+  transform: rotate(45deg);
+}
+@keyframes slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
+/* ---------------- services ---------------- */
+.svcGrid {
+  display: grid;
+  gap: 1px;
+  background: var(--hairline-soft);
+  border: 1px solid var(--hairline-soft);
+}
+.svc {
+  background: var(--ink);
+  padding: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  position: relative;
+  transition: background 0.35s var(--ease-out);
+}
+.svc:hover {
+  background: var(--steel);
+}
+.svcFig {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 8;
+}
+.svcFig img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.75) contrast(1.06) brightness(0.75);
+  transition: filter 0.6s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.svc:hover .svcFig img {
+  filter: grayscale(0) contrast(1.02) brightness(0.9);
+  transform: scale(1.05);
+}
+.svcFig::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, var(--ink));
+}
+.svcNo {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  background: var(--amber);
+  color: #0a0a0a;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.7rem;
+}
+.svcBody {
+  padding: 1.25rem 1.35rem 1.5rem;
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+.svcBody h3 {
+  margin: 0;
+  color: var(--paper);
+}
+.svcLead {
+  color: var(--paper-dim);
+  font-size: 0.96rem;
+}
+.symptom {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.87rem;
+  color: var(--muted);
+  border-left: 2px solid var(--oxide);
+  padding-left: 0.7rem;
+}
+.symptom b {
+  color: var(--paper-dim);
+  font-weight: 600;
+  white-space: nowrap;
+}
+/* The Sinhala label is a phrase, not two words — keeping it on the same line
+   squeezes the symptom text into a three-word column. Stack instead. */
+:global([data-lang="si"]) .symptom {
+  display: block;
+}
+:global([data-lang="si"]) .symptom b {
+  display: block;
+  white-space: normal;
+  margin-bottom: 0.15rem;
+}
+:global([data-lang="si"]) .svcLead,
+:global([data-lang="si"]) .jobs li {
+  line-height: 1.6;
+}
+
+.details {
+  border-top: 1px dashed var(--hairline);
+  padding-top: 0.85rem;
+  margin-top: 0.25rem;
+}
+.details > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+:global([data-lang="si"]) .details > summary {
+  font-family: var(--f-si-display);
+  font-size: 0.9rem;
+}
+.details > summary::-webkit-details-marker {
+  display: none;
+}
+.details > summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.25s var(--ease-out);
+}
+.details[open] > summary::after {
+  transform: rotate(45deg);
+}
+.jobs {
+  list-style: none;
+  padding: 0.9rem 0 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.jobs li {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--paper-dim);
+  line-height: 1.5;
+}
+.jobs li::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  margin-top: 0.45rem;
+  border: 2px solid var(--amber);
+  transform: rotate(45deg);
+}
+
+@media (min-width: 640px) {
+  .svcGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1080px) {
+  .svcGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------------- process ---------------- */
+.steps {
+  display: grid;
+  gap: 0;
+  counter-reset: step;
+}
+.step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem 1.5rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--hairline-soft);
+  align-items: start;
+}
+.step:last-child {
+  border-bottom: 1px solid var(--hairline-soft);
+}
+.stepNo {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--hairline);
+  min-width: 2.6ch;
+  transition: color 0.4s, -webkit-text-stroke-color 0.4s;
+}
+.step:hover .stepNo {
+  color: var(--amber);
+  -webkit-text-stroke-color: var(--amber);
+}
+.stepBody h3 {
+  margin: 0 0 0.4rem;
+}
+.stepBody p {
+  color: var(--paper-dim);
+  max-width: 62ch;
+}
+
+@media (min-width: 900px) {
+  .step {
+    grid-template-columns: 5rem minmax(14rem, 20rem) 1fr;
+    align-items: center;
+  }
+  .stepBody {
+    display: contents;
+  }
+  .stepBody h3 {
+    margin: 0;
+  }
+}
+
+/* ---------------- generic dark panel ---------------- */
+.panel {
+  background: var(--ink);
+  border: 1px solid var(--hairline-soft);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}

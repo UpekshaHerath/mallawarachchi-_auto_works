@@ -1,0 +1,131 @@
+.footer {
+  background: var(--oil);
+  border-top: 1px solid var(--hairline-soft);
+  padding-bottom: 5.5rem; /* room for the mobile action bar */
+}
+.top {
+  display: grid;
+  gap: 2rem;
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+.brandCol {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+.brandCol :global(.logo-mark) {
+  color: var(--amber);
+}
+.blurb {
+  color: var(--muted);
+  font-size: 0.92rem;
+  max-width: 34ch;
+}
+.colTitle {
+  font-family: var(--f-display);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  margin-bottom: 0.9rem;
+}
+:global([data-lang="si"]) .colTitle {
+  font-family: var(--f-si-display);
+  letter-spacing: 0.02em;
+  font-size: 0.85rem;
+}
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--paper-dim);
+  font-size: 0.94rem;
+}
+.links a svg {
+  flex: 0 0 auto;
+  color: var(--amber);
+}
+.links a:hover {
+  color: var(--amber);
+}
+.bottom {
+  border-top: 1px solid var(--hairline-soft);
+  padding-block: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted-2);
+  font-size: 0.82rem;
+}
+
+@media (min-width: 760px) {
+  .top {
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .footer {
+    padding-bottom: 0;
+  }
+}
+
+/* ---------- sticky mobile action bar ---------- */
+.bar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 70;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: rgba(11, 13, 16, 0.94);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--hairline);
+  transform: translateY(110%);
+  transition: transform 0.4s var(--ease-out);
+}
+.barShow {
+  transform: none;
+}
+.barBtn {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  padding: 0.7rem 0.5rem calc(0.7rem + env(safe-area-inset-bottom));
+  font-family: var(--f-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+}
+:global([data-lang="si"]) .barBtn {
+  font-family: var(--f-si-display);
+  font-size: 0.78rem;
+}
+.barBtn + .barBtn {
+  border-left: 1px solid var(--hairline);
+}
+.barBtn svg {
+  color: var(--amber);
+}
+.barCall {
+  background: var(--amber);
+  color: #0a0a0a;
+}
+.barCall svg {
+  color: #0a0a0a;
+}
+
+@media (min-width: 760px) {
+  .bar {
+    display: none;
+  }
+}

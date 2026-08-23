@@ -1,0 +1,402 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: var(--oil);
+  isolation: isolate;
+}
+
+/* ---------- backdrop ---------- */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+.bg picture,
+.bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bg img {
+  animation: kenburns 26s var(--ease-out) 0.4s both;
+  filter: saturate(0.82) contrast(1.05);
+}
+@keyframes kenburns {
+  from {
+    transform: scale(1.14) translate3d(0, 1.5%, 0);
+  }
+  to {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(6, 7, 10, 0.86) 0%, rgba(6, 7, 10, 0.3) 34%, rgba(6, 7, 10, 0.94) 88%),
+    radial-gradient(90% 65% at 78% 22%, var(--amber-glow), transparent 62%);
+}
+.vign {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  box-shadow: inset 0 0 190px 40px rgba(0, 0, 0, 0.85);
+}
+
+/* ---------- roller-shutter intro ---------- */
+.shutter {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  transform-origin: top center;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      #16191e 0 16px,
+      #0d0f13 16px 18px,
+      #1d2128 18px 30px,
+      #090b0e 30px 32px
+    );
+  animation: rollup 1.15s cubic-bezier(0.72, 0, 0.2, 1) 0.25s forwards;
+}
+.shutter::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 12px;
+  background: linear-gradient(180deg, var(--amber-deep), #6b4a00);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+@keyframes rollup {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+    visibility: hidden;
+  }
+}
+
+/* ---------- corner gear ---------- */
+.gear {
+  position: absolute;
+  top: 12vh;
+  right: -5rem;
+  width: min(34vw, 26rem);
+  height: min(34vw, 26rem);
+  z-index: -1;
+  color: rgba(255, 193, 14, 0.11);
+  animation: spin 44s linear infinite;
+  pointer-events: none;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- content ---------- */
+.inner {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 8rem var(--gutter) 0;
+  display: grid;
+  gap: 2.25rem;
+}
+
+.est {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  align-self: start;
+  justify-self: start;
+  padding: 0.4rem 0.9rem 0.4rem 0.4rem;
+  border: 1px solid rgba(255, 193, 14, 0.35);
+  background: rgba(255, 193, 14, 0.07);
+  backdrop-filter: blur(4px);
+  font-family: var(--f-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  animation: fadeUp 0.7s var(--ease-out) 1.15s both;
+}
+.estNum {
+  background: var(--amber);
+  color: #0a0a0a;
+  padding: 0.2rem 0.55rem;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+:global([data-lang="si"]) .est {
+  font-family: var(--f-si-display);
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}
+
+.title {
+  font-size: clamp(3rem, 10.5vw, 8.2rem);
+  line-height: 0.86;
+  letter-spacing: -0.018em;
+  margin: 0;
+}
+:global([data-lang="si"]) .title {
+  font-size: clamp(2.05rem, 6vw, 4.7rem);
+  line-height: 1.08;
+}
+.line {
+  display: block;
+  overflow: hidden;
+}
+/* Noto's ascenders sit close to the top of the line box; a hair of padding
+   stops the mask clipping them while the line lifts in. */
+:global([data-lang="si"]) .line {
+  padding-block: 0.06em;
+}
+.line > span {
+  display: block;
+  transform: translateY(105%);
+  animation: liftIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.line:nth-child(1) > span {
+  animation-delay: 1.05s;
+}
+.line:nth-child(2) > span {
+  animation-delay: 1.18s;
+}
+.line:nth-child(3) > span {
+  animation-delay: 1.31s;
+}
+@keyframes liftIn {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.accent {
+  color: var(--amber);
+  position: relative;
+}
+/* single amber sweep across the accent word */
+.accent::after {
+  content: "";
+  position: absolute;
+  inset: -0.1em -0.3em;
+  background: linear-gradient(
+    100deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.85) 50%,
+    transparent 65%
+  );
+  mix-blend-mode: overlay;
+  transform: translateX(-130%);
+  animation: sweep 1.5s cubic-bezier(0.4, 0, 0.2, 1) 2.05s 1 both;
+  pointer-events: none;
+}
+@keyframes sweep {
+  to {
+    transform: translateX(130%);
+  }
+}
+
+.lede {
+  max-width: 46ch;
+  font-size: clamp(1.02rem, 0.98rem + 0.4vw, 1.2rem);
+  color: var(--paper-dim);
+  animation: fadeUp 0.8s var(--ease-out) 1.55s both;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  animation: fadeUp 0.8s var(--ease-out) 1.7s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* today's-hours card, styled like a workshop job card */
+.card {
+  justify-self: start;
+  min-width: min(100%, 21rem);
+  background: rgba(11, 13, 16, 0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--hairline);
+  border-top: 3px solid var(--amber);
+  padding: 1rem 1.15rem;
+  display: grid;
+  gap: 0.55rem;
+  animation: fadeUp 0.8s var(--ease-out) 1.85s both;
+}
+.cardRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.94rem;
+  color: var(--paper-dim);
+}
+.cardRow svg {
+  color: var(--amber);
+  flex: 0 0 auto;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--go);
+  box-shadow: 0 0 0 4px rgba(55, 214, 122, 0.16);
+  flex: 0 0 auto;
+}
+.dotShut {
+  background: var(--oxide);
+  box-shadow: 0 0 0 4px rgba(194, 65, 12, 0.16);
+}
+
+/* ---------- foot strip ---------- */
+.foot {
+  position: relative;
+  z-index: 4;
+  margin-top: 3.5rem;
+}
+.stats {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 1.4rem var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1rem;
+}
+.stat {
+  display: grid;
+  gap: 0.15rem;
+}
+.statNum {
+  font-family: var(--f-display);
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--paper);
+  font-variant-numeric: tabular-nums;
+}
+.statNum em {
+  font-style: normal;
+  color: var(--amber);
+}
+.statLabel {
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: var(--f-display);
+  font-weight: 600;
+}
+:global([data-lang="si"]) .statLabel {
+  font-family: var(--f-si-display);
+  font-size: 0.85rem;
+}
+
+.scrollCue {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 7rem;
+  z-index: 5;
+  display: none;
+  writing-mode: vertical-rl;
+  font-family: var(--f-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+  align-items: center;
+  gap: 0.8rem;
+  animation: fadeUp 1s var(--ease-out) 2.2s both;
+}
+.scrollCue::after {
+  content: "";
+  width: 1px;
+  height: 3.5rem;
+  background: linear-gradient(var(--amber), transparent);
+  animation: cue 2.2s ease-in-out infinite;
+}
+@keyframes cue {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+@media (min-width: 720px) {
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .scrollCue {
+    display: flex;
+  }
+}
+
+@media (min-width: 1000px) {
+  .inner {
+    padding-top: 9rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 2.5rem 3rem;
+  }
+  .est,
+  .title,
+  .lede,
+  .ctas {
+    grid-column: 1;
+  }
+  .card {
+    grid-column: 2;
+    grid-row: 2 / span 3;
+    align-self: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shutter {
+    display: none;
+  }
+  .line > span,
+  .est,
+  .lede,
+  .ctas,
+  .card,
+  .scrollCue {
+    transform: none !important;
+    opacity: 1 !important;
+    animation: none !important;
+  }
+  .bg img,
+  .gear,
+  .accent::after {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,82 @@
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.lockupCompact {
+  gap: 0.6rem;
+}
+
+.mark {
+  flex: 0 0 auto;
+  color: var(--amber);
+  overflow: visible;
+}
+
+/* Only the ring turns. The car stays put, which is what makes it read as a
+   machine rather than a spinning sticker. 30° is exactly one tooth pitch, so
+   the gear lands back in register. */
+.gear {
+  transform-origin: 60px 60px;
+  transition: transform 0.75s cubic-bezier(0.34, 1.32, 0.5, 1);
+}
+.lockup:hover .gear,
+a:hover .mark .gear,
+a:focus-visible .mark .gear {
+  transform: rotate(30deg);
+}
+
+.words {
+  display: grid;
+  gap: 0.22rem;
+  line-height: 1;
+}
+
+.name {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: 1.24rem;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: currentColor;
+  white-space: nowrap;
+}
+.nameCompact {
+  font-size: 1.04rem;
+}
+
+.sub {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.subText {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--amber);
+  white-space: nowrap;
+}
+.subCompact {
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+}
+/* rule fills whatever is left, so the second line always ends flush with the
+   name above it however wide the name renders */
+.subRule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--amber), rgba(255, 193, 14, 0.15));
+  margin-inline-end: 0.15rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gear {
+    transition: none;
+  }
+  .lockup:hover .gear {
+    transform: none;
+  }
+}

@@ -1,0 +1,218 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  transition: background 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+.header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: var(--hairline);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.stuck {
+  background: rgba(11, 13, 16, 0.88);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 18px 40px -28px #000;
+}
+.stuck::after {
+  opacity: 1;
+}
+
+.bar {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 0.85rem var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  color: var(--paper);
+  flex: 0 0 auto;
+}
+.nav {
+  display: none;
+  margin-inline-start: auto;
+  align-items: center;
+  gap: 1.6rem;
+}
+.link {
+  font-family: var(--f-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  padding-block: 0.35rem;
+  position: relative;
+  white-space: nowrap;
+}
+:global([data-lang="si"]) .link {
+  font-family: var(--f-si-display);
+  font-size: 0.95rem;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 2px;
+  background: var(--amber);
+  transition: right 0.3s var(--ease-out);
+}
+.link:hover {
+  color: var(--paper);
+}
+.link:hover::after {
+  right: 0;
+}
+
+.actions {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.nav ~ .actions {
+  margin-inline-start: 0;
+}
+
+.lang {
+  display: inline-flex;
+  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2px;
+}
+.langBtn {
+  font-family: var(--f-body), var(--f-sinhala);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0.32rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  line-height: 1.2;
+}
+.langOn {
+  background: var(--amber);
+  color: #0a0a0a;
+}
+
+.call {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--amber);
+  color: #0a0a0a;
+  font-family: var(--f-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%);
+}
+.call:hover {
+  filter: brightness(1.08);
+}
+
+.burger {
+  width: 44px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--hairline);
+  cursor: pointer;
+  padding: 0;
+}
+.burger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--paper);
+  transition: transform 0.3s var(--ease-mech), opacity 0.2s;
+}
+.burger span + span {
+  margin-top: 5px;
+}
+.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.open span:nth-child(2) {
+  opacity: 0;
+}
+.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* mobile sheet */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: var(--ink);
+  padding: 6rem var(--gutter) 2rem;
+  display: grid;
+  align-content: start;
+  gap: 0.25rem;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.55s var(--ease-mech);
+  overflow-y: auto;
+}
+.sheetOpen {
+  clip-path: inset(0 0 0 0);
+}
+.sheetLink {
+  font-family: var(--f-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--hairline-soft);
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+}
+:global([data-lang="si"]) .sheetLink {
+  font-family: var(--f-si-display);
+  font-size: 1.45rem;
+}
+.sheetNo {
+  font-size: 0.75rem;
+  color: var(--amber);
+  letter-spacing: 0.2em;
+  font-family: var(--f-display);
+}
+.sheetFoot {
+  margin-top: 1.75rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 1000px) {
+  .nav {
+    display: flex;
+  }
+  .call {
+    display: inline-flex;
+  }
+  .burger {
+    display: none;
+  }
+  .sheet {
+    display: none;
+  }
+}

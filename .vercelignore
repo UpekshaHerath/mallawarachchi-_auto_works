@@ -1,0 +1,7 @@
+# Build output and deps are produced on Vercel, never uploaded.
+.next
+node_modules
+
+# Agent/repo notes — nothing in the build reads them.
+AGENTS.md
+CLAUDE.md

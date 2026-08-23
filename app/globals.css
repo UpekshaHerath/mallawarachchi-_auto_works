@@ -1,49 +1,382 @@
+/* ==========================================================================
+   Mallawaarachchi Auto Works — workshop design system
+   Palette taken from the shop's own signboard: black steel, safety amber,
+   job-card paper, oxide red.
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* surfaces */
+  --oil: #06070a;
+  --ink: #0b0d10;
+  --steel: #14171c;
+  --steel-2: #1b1f26;
+  --hairline: #262c35;
+  --hairline-soft: #1e232b;
+
+  /* paper / text */
+  --paper: #f3efe6;
+  --paper-dim: #cfc9bd;
+  --muted: #8d949f;
+  --muted-2: #6b727d;
+
+  /* signal colours */
+  --amber: #ffc10e;
+  --amber-deep: #d99b00;
+  --amber-glow: rgba(255, 193, 14, 0.28);
+  --oxide: #c2410c;
+  --go: #37d67a;
+
+  /* type */
+  --f-display: var(--font-condensed), "Arial Narrow", system-ui, sans-serif;
+  --f-body: var(--font-body), system-ui, -apple-system, sans-serif;
+  /* Sinhala copy is code-mixed, so the Latin face is listed FIRST: English
+     technical words keep the site's own typography and only Sinhala
+     codepoints fall through to Noto, which is the one face that has them. */
+  --f-si: var(--font-body), var(--font-sinhala), sans-serif;
+  --f-si-display: var(--font-condensed), var(--font-sinhala), sans-serif;
+
+  /* rhythm */
+  --gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --section-y: clamp(4rem, 7vw, 7rem);
+  --maxw: 78rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-mech: cubic-bezier(0.65, 0, 0.15, 1);
+
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
+/* ---------- reset ---------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
+}
+* {
   margin: 0;
 }
-
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+body {
+  background: var(--oil);
+  color: var(--paper);
+  font-family: var(--f-body);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img,
+svg,
+picture,
+video,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
 a {
   color: inherit;
   text-decoration: none;
 }
+:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+::selection {
+  background: var(--amber);
+  color: #000;
+}
 
-@media (prefers-color-scheme: dark) {
+/* ---------- bilingual switching (no JS re-render, no hydration cost) ----- */
+[data-lang="en"] :where(.si) {
+  display: none;
+}
+[data-lang="si"] :where(.en) {
+  display: none;
+}
+/*
+ * Only the family is set here. A line-height on .si would apply to the inline
+ * span *inside* a heading, giving it a taller line box than the heading it
+ * sits in — which is what blew the headline apart. Leading is set on the
+ * block elements below instead, so the span simply inherits it.
+ */
+.si {
+  font-family: var(--f-si);
+  letter-spacing: 0;
+}
+[data-lang="si"] body {
+  font-family: var(--f-si);
+  line-height: 1.74;
+}
+
+/* ---------- typography ---------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--f-display);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+[data-lang="si"] :where(h1, h2, h3, h4) {
+  font-family: var(--f-si-display);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0;
+}
+h1 {
+  font-size: clamp(2.75rem, 8.5vw, 6.5rem);
+  text-transform: uppercase;
+}
+h2 {
+  font-size: clamp(2rem, 5.2vw, 3.75rem);
+  text-transform: uppercase;
+}
+h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+/* Noto Sinhala runs optically larger than Barlow Condensed at the same px,
+   and the strings are longer, so each level steps down a notch. Uppercase is
+   kept: it only affects the Latin half, which is exactly the effect we want. */
+[data-lang="si"] h1 {
+  font-size: clamp(2.3rem, 6.8vw, 5.1rem);
+}
+[data-lang="si"] h2 {
+  font-size: clamp(1.7rem, 4.2vw, 2.9rem);
+}
+[data-lang="si"] h3 {
+  font-size: clamp(1.1rem, 1.9vw, 1.35rem);
+  line-height: 1.2;
+}
+p {
+  text-wrap: pretty;
+}
+
+/* ---------- layout helpers ---------- */
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.section {
+  padding-block: var(--section-y);
+  position: relative;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- shop textures ---------- */
+
+/* diamond / chequer plate */
+.plate {
+  background-color: var(--steel);
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.028) 0 2px,
+      transparent 2px 14px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 0, 0, 0.3) 0 2px,
+      transparent 2px 14px
+    );
+}
+
+/* faint blueprint grid */
+.grid-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(120% 90% at 50% 0%, #000 20%, transparent 78%);
+  pointer-events: none;
+}
+
+/* hazard tape */
+.hazard {
+  height: 10px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--amber) 0 16px,
+    var(--oil) 16px 32px
+  );
+}
+.hazard-thin {
+  height: 5px;
+}
+
+/* grease-flecked film over dark photos */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+/* ---------- shared bits ---------- */
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--f-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.kicker::before {
+  content: "";
+  width: 2.25rem;
+  height: 2px;
+  background: var(--amber);
+}
+[data-lang="si"] .kicker {
+  font-family: var(--f-si-display);
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+}
+
+/* big outlined stencil numeral */
+.stencil {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--hairline);
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--hairline),
+    var(--hairline) 60%,
+    transparent
+  );
+}
+
+/* buttons — pressed steel, not soft SaaS pills */
+.btn {
+  --btn-bg: var(--amber);
+  --btn-fg: #0a0a0a;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.5rem;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 0;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%);
+  cursor: pointer;
+  transition: transform 0.18s var(--ease-out), filter 0.18s var(--ease-out);
+  will-change: transform;
+}
+[data-lang="si"] .btn {
+  font-family: var(--f-si-display);
+  letter-spacing: 0.04em;
+  font-size: 0.98rem;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--paper);
+  box-shadow: inset 0 0 0 2px var(--hairline);
+}
+.btn--ghost:hover {
+  box-shadow: inset 0 0 0 2px var(--amber);
+  color: var(--amber);
+}
+.btn--wa {
+  --btn-bg: #1faa54;
+  --btn-fg: #fff;
+}
+
+/* ---------- entrance animation (IntersectionObserver adds .in) --------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.75s var(--ease-out),
+    transform 0.75s var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.wipe {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s var(--ease-mech);
+  transition-delay: var(--d, 0ms);
+}
+.wipe.in {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    color-scheme: dark;
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal,
+  .wipe {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
   }
 }
