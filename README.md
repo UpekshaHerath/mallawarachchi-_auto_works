@@ -18,6 +18,7 @@ npm run build && npm start
 | Opening-hours logic | `lib/hours.ts` | Works in Asia/Colombo regardless of the visitor's timezone. |
 | Design system | `app/globals.css` | Colour tokens, textures (hazard tape, chequer plate, blueprint grid), buttons, reveal animations. |
 | Sections | `components/*.tsx` + matching `*.module.css` | One component per section of the page. |
+| Search / structured data | `lib/seo.ts` + `app/layout.tsx` | One JSON-LD `@graph`, metadata, geo tags. See below. |
 | Photo pipeline | `scripts/blur-plates.mjs` → `scripts/optimize-images.mjs` | Plate masking, then responsive encoding. See below. |
 
 ## Bilingual without a router
@@ -96,6 +97,60 @@ the section components, and is worth re-reading when an image changes.
 > Several of those were uploaded by customers, who hold copyright in them.
 > Replacing them with the shop's own photographs is the safe long-term move,
 > and the pipeline above makes it a one-folder change.
+
+## Search (local SEO)
+
+The site targets one thing: somebody in or near Ganemulla with a vehicle
+problem, searching in English or Sinhala. Everything below serves that.
+
+**Where the signals live**
+
+| Signal | File | Notes |
+| --- | --- | --- |
+| Title, description, keywords, OG/Twitter, robots directives, geo meta | `app/layout.tsx` | Title is keyword-first (`Vehicle Repairs in Ganemulla, Gampaha …`) — the brand is not what people search yet. |
+| Structured data | `lib/seo.ts` | A single `@graph`: `AutoRepair`+`LocalBusiness`, `WebSite`, `WebPage`, `FAQPage`. Nodes cross-reference by `@id`. |
+| NAP, hours, geo, service area | `lib/site.ts` | One source for the page, the schema and the map. Must match the Google Business listing character for character. |
+| FAQ copy | `lib/content.ts` → `faqs` | Rendered by `components/FAQ.tsx` **and** emitted as `FAQPage`. Edit once. |
+| Crawl + discovery | `app/robots.ts`, `app/sitemap.ts` | Sitemap carries the photo URLs too, since plain `<picture>` tags are otherwise invisible to Google Images. |
+
+**Deliberate omissions**
+
+- **No `Review` or `AggregateRating` markup.** The 4.1 / 24 reviews come from
+  the workshop's Google listing. Google's policy does not allow a site to
+  re-publish third-party reviews about itself as its own review markup, and the
+  penalty for getting that wrong is a manual action. The reviews stay on the
+  page for readers; they are simply not claimed in schema.
+- **No invented facts in schema.** No founding date, no warranty terms, no
+  payment methods beyond cash, no price list. Anything in `lib/seo.ts` has to
+  be defensible from what the page says out loud.
+
+**Bilingual and one URL**
+
+Both languages ship in the same HTML and CSS hides one, so a single URL is
+indexed. Google reads toggle-hidden content normally, and the Sinhala copy is
+in the DOM — but only the English title and description can appear in a SERP.
+If Sinhala search traffic ever justifies it, the upgrade is a real `/si` route
+with its own `<title>`, `<meta name="description">` and reciprocal `hreflang`
+tags; that needs the language to be decided on the server rather than in
+`localStorage`.
+
+**After launch — the part that actually moves the needle**
+
+A workshop ranks locally on its Google Business Profile far more than on its
+website. In rough order of payoff:
+
+1. Claim and complete the Google Business Profile — same name, address and
+   phone as `lib/site.ts`, the same categories as this page's services, real
+   photos, and the site URL.
+2. Ask satisfied customers for Google reviews. Reviews and review recency are
+   the strongest local ranking factor available to a small workshop.
+3. Submit `sitemap.xml` in Google Search Console and watch the Performance
+   report for the queries that actually arrive — they are usually more specific
+   than expected ("overheating repair Gampaha", not "car repair").
+4. Get listed consistently in local directories (LankaBiz, Yellow Pages LK,
+   Facebook) with identical NAP. Inconsistent phone numbers dilute the signal.
+5. Keep the FAQ growing from real phone calls. Every genuine question added is
+   another long-tail query the page can answer.
 
 ## Contact
 

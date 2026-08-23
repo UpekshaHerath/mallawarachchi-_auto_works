@@ -11,7 +11,8 @@ const NAV = [
   { href: "#how", no: "02", en: "How we work", si: "වැඩ පිළිවෙල" },
   { href: "#workshop", no: "03", en: "Workshop", si: "වැඩපොළ" },
   { href: "#reviews", no: "04", en: "Reviews", si: "Reviews" },
-  { href: "#find-us", no: "05", en: "Find us", si: "ලිපිනය" },
+  { href: "#faq", no: "05", en: "FAQ", si: "ප්‍රශ්න" },
+  { href: "#find-us", no: "06", en: "Find us", si: "ලිපිනය" },
 ];
 
 export function Header() {

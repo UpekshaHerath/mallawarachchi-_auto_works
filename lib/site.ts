@@ -38,6 +38,28 @@ export const site = {
 
   rating: { value: 4.1, count: 24 },
 
+  /** Free-text band used by schema.org. Not a quote — just an ordering hint. */
+  priceRange: "$$",
+
+  /** Towns people actually drive in from. Feeds schema.org areaServed. */
+  areaServed: [
+    "Ganemulla",
+    "Yagoda",
+    "Gampaha",
+    "Kadawatha",
+    "Ja-Ela",
+    "Nittambuwa",
+    "Veyangoda",
+    "Ragama",
+    "Kiribathgoda",
+    "Minuwangoda",
+    "Weliveriya",
+    "Delgoda",
+  ],
+
+  /** Profiles that describe the same business, for schema.org sameAs. */
+  sameAs: ["https://www.google.com/maps?cid=7169456798782565345"],
+
   /** 0 = Sunday. `null` = closed. Times are 24h local (Asia/Colombo). */
   hours: [
     null,

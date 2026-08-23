@@ -288,3 +288,62 @@
   border: 1px solid var(--hairline-soft);
   padding: clamp(1.25rem, 3vw, 2rem);
 }
+
+/* ---------- FAQ ---------- */
+
+.faqList {
+  display: grid;
+  gap: 0;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--hairline-soft);
+  max-width: 60rem;
+}
+
+/* Wider hit area and normal-case questions — these are sentences, not labels. */
+.faq {
+  border-top: 1px solid var(--hairline-soft);
+  padding: 0;
+  margin: 0;
+}
+.faq > summary {
+  padding: 1.05rem 0.25rem;
+  align-items: flex-start;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--paper);
+  transition: color 0.2s var(--ease-out);
+}
+.faq > summary:hover,
+.faq[open] > summary {
+  color: var(--amber);
+}
+.faq > summary::after {
+  color: var(--amber);
+  padding-left: 0.75rem;
+}
+.faqQ {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  text-transform: none;
+  color: inherit;
+}
+:global([data-lang="si"]) .faqQ {
+  font-family: var(--f-si-display);
+  line-height: 1.55;
+}
+.faqA {
+  margin: 0;
+  padding: 0 2rem 1.35rem 0.25rem;
+  max-width: 56ch;
+  color: var(--paper-dim);
+  font-size: 0.97rem;
+  line-height: 1.75;
+}
+:global([data-lang="si"]) .faqA {
+  font-family: var(--f-si);
+  line-height: 1.95;
+}

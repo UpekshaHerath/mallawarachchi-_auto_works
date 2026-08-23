@@ -54,7 +54,7 @@ export function Services() {
                 <span className={s.svcNo}>{svc.no}</span>
                 <Media
                   name={svc.image}
-                  alt=""
+                  alt={`${svc.title.en} at the Mallawaarachchi Auto Works workshop in Ganemulla`}
                   sizes="(min-width: 1080px) 22vw, (min-width: 640px) 46vw, 92vw"
                 />
               </div>

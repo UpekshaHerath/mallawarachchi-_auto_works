@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Barlow, Barlow_Condensed, Noto_Sans_Sinhala } from "next/font/google";
 import { site } from "@/lib/site";
 import { resolveSiteUrl } from "@/lib/url";
+import { buildJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const body = Barlow({
@@ -32,36 +33,76 @@ const sinhala = Noto_Sans_Sinhala({
 export const metadata: Metadata = {
   metadataBase: new URL(resolveSiteUrl()),
   title: {
-    default: "Mallawaarachchi Auto Works — Car, Van & SUV Repairs in Ganemulla",
+    // Keyword first, brand second: nobody searches the name yet, they search
+    // the job and the town.
+    default:
+      "Vehicle Repairs in Ganemulla, Gampaha | Mallawaarachchi Auto Works",
     template: "%s | Mallawaarachchi Auto Works",
   },
   description:
-    "Light-vehicle repair workshop in Pahala Yagoda, Ganemulla. Engine overhauls, brakes, overheating, clutch and gearbox, suspension, scanner diagnostics and full service. Over 35 years in the trade. Call 071 430 9635.",
+    "Light-vehicle repair workshop at Pahala Yagoda, Ganemulla, Gampaha. Engine overhauls, overheating, brakes, clutch and gearbox, suspension, injectors and scanner diagnostics for cars, vans and SUVs — petrol and diesel. Over 35 years, estimate before any work. Call 071 430 9635.",
+  applicationName: site.name,
+  category: "Automotive repair",
+  authors: [{ name: site.name }],
+  creator: site.name,
+  publisher: site.name,
   keywords: [
     "vehicle repair Ganemulla",
-    "car repair Gampaha",
-    "engine overhaul Sri Lanka",
+    "car repair Ganemulla",
     "garage Ganemulla",
-    "auto works Yagoda",
+    "vehicle repair Gampaha",
+    "car service Gampaha",
+    "workshop Yagoda",
+    "engine overhaul Sri Lanka",
+    "overheating repair Gampaha",
     "brake repair Ganemulla",
+    "clutch and gearbox repair Gampaha",
+    "auto electrical Ganemulla",
+    "scanner diagnosis Sri Lanka",
+    "van repair Ganemulla",
+    "SUV repair Gampaha",
+    "diesel injector cleaning Sri Lanka",
     "වාහන අලුත්වැඩියාව ගනේමුල්ල",
+    "වාහන සේවා ගම්පහ",
+    "ගනේමුල්ල garage",
   ],
   openGraph: {
     type: "website",
     locale: "en_LK",
+    alternateLocale: "si_LK",
+    url: "/",
     siteName: site.name,
-    title: "Mallawaarachchi Auto Works — Ganemulla",
+    title: "Vehicle Repairs in Ganemulla, Gampaha — Mallawaarachchi Auto Works",
     description:
-      "Cars, vans and SUVs. Engines, brakes, cooling, transmission and full running repairs. Over 35 years in Ganemulla.",
+      "Cars, vans and SUVs, petrol and diesel. Engines, overheating, brakes, gearbox, suspension, injectors and scanner diagnostics — diagnosed before anything is replaced. Over 35 years at Pahala Yagoda, Ganemulla.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mallawaarachchi Auto Works — Ganemulla",
+    title: "Vehicle Repairs in Ganemulla, Gampaha — Mallawaarachchi Auto Works",
     description:
-      "Cars, vans and SUVs. Engines, brakes, cooling, transmission and full running repairs. Over 35 years in Ganemulla.",
+      "Light-vehicle workshop at Pahala Yagoda, Ganemulla. Engines, overheating, brakes, gearbox, suspension and diagnostics. Over 35 years.",
   },
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: { telephone: true, address: true },
+  other: {
+    // Legacy geo tags. Cheap, still read by a few local directories and
+    // aggregators that never picked up JSON-LD.
+    "geo.region": "LK-1",
+    "geo.placename": `${site.address.city}, ${site.address.district}`,
+    "geo.position": `${site.geo.lat};${site.geo.lng}`,
+    ICBM: `${site.geo.lat}, ${site.geo.lng}`,
+  },
 };
 
 export const viewport: Viewport = {
@@ -70,48 +111,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "AutoRepair",
-  name: site.name,
-  description:
-    "Light-vehicle repair workshop handling cars, vans and SUVs — engine, brake, cooling, transmission, suspension, fuel and electrical repairs.",
-  url: resolveSiteUrl(),
-  telephone: site.phones.map((p) => p.e164),
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.address.line1,
-    addressLocality: site.address.city,
-    addressRegion: site.address.district,
-    addressCountry: "LK",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: site.geo.lat,
-    longitude: site.geo.lng,
-  },
-  hasMap: site.maps.place,
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      opens: "08:30",
-      closes: "17:00",
-    },
-  ],
-  currenciesAccepted: "LKR",
-  areaServed: ["Ganemulla", "Gampaha", "Yagoda", "Kadawatha", "Ja-Ela", "Nittambuwa"],
-};
-
 /* Restores the language choice before first paint so there is no flash. */
-const langBoot = `(function(){try{var l=localStorage.getItem("maw-lang");if(l==="si"||l==="en")document.documentElement.setAttribute("data-lang",l);}catch(e){}})();`;
+const langBoot = `(function(){try{var l=localStorage.getItem("maw-lang");if(l==="si"||l==="en"){var d=document.documentElement;d.setAttribute("data-lang",l);d.setAttribute("lang",l);}}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -133,7 +134,7 @@ export default function RootLayout({
         {children}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd()) }}
         />
       </body>
     </html>

@@ -5,6 +5,7 @@ import { Process } from "@/components/Process";
 import { Workshop } from "@/components/Workshop";
 import { Gallery } from "@/components/Gallery";
 import { Reviews } from "@/components/Reviews";
+import { FAQ } from "@/components/FAQ";
 import { Location } from "@/components/Location";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
@@ -23,6 +24,7 @@ export default function Home() {
         <Workshop />
         <Gallery />
         <Reviews />
+        <FAQ />
         <Location />
         <Contact />
       </main>

@@ -60,14 +60,16 @@ export function Hero() {
 
         <p className={s.lede}>
           <span className="en">
-            A light-vehicle workshop in Pahala Yagoda, Ganemulla — cars, vans and
-            SUVs. Engines, brakes, overheating, clutch and gearbox, suspension
-            and full running repairs, under one roof for over 35 years.
+            A light-vehicle repair workshop at Pahala Yagoda, Ganemulla, in the
+            Gampaha District — cars, vans and SUVs, petrol and diesel. Engines,
+            brakes, overheating, clutch and gearbox, suspension and full running
+            repairs, under one roof for over 35 years.
           </span>
           <span className="si">
-            පහල යාගොඩ, ගනේමුල්ලේ තියෙන light vehicle workshop එකක් — Car, Van
-            සහ SUV. Engine, brake, overheating, clutch සහ gearbox, suspension
-            ඇතුළු හැම running repair එකක්ම එකම වහලක් යට. වසර 35කට වැඩියි.
+            ගම්පහ දිස්ත්‍රික්කයේ, පහල යාගොඩ ගනේමුල්ලේ තියෙන light vehicle
+            workshop එකක් — Car, Van සහ SUV, petrol සහ diesel. Engine, brake,
+            overheating, clutch සහ gearbox, suspension ඇතුළු හැම running repair
+            එකක්ම එකම වහලක් යට. වසර 35කට වැඩියි.
           </span>
         </p>
 

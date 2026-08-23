@@ -72,6 +72,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="#faq">
+                  <span className="en">Common questions</span>
+                  <span className="si">නිතර අහන ප්‍රශ්න</span>
+                </a>
+              </li>
+              <li>
                 <a href="#contact">
                   <span className="en">Contact</span>
                   <span className="si">අපිට කියන්න</span>
@@ -113,6 +119,16 @@ export function Footer() {
             </ul>
           </div>
         </div>
+
+        <p className={s.areas}>
+          <b>
+            <span className="en">Vehicles come to us from</span>
+            <span className="si">වාහන එන ප්‍රදේශ</span>
+          </b>{" "}
+          {site.areaServed.join(" · ")}
+          <span className="en"> — and the rest of the Gampaha District.</span>
+          <span className="si"> — සහ ගම්පහ දිස්ත්‍රික්කයේ අනිත් ප්‍රදේශ.</span>
+        </p>
 
         <div className={s.bottom}>
           <span>
