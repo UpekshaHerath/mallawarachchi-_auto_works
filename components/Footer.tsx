@@ -14,11 +14,11 @@ export function Footer() {
             <LogoLockup />
             <p className={s.blurb}>
               <span className="en">
-                Light-vehicle repairs — cars, vans and SUVs — at Pahala Yagoda,
+                Light-vehicle repairs - cars, vans and SUVs - at Pahala Yagoda,
                 Ganemulla. Over 35 years in the trade.
               </span>
               <span className="si">
-                Light vehicle අලුත්වැඩියාව — car, van සහ SUV — පහල යාගොඩ,
+                Light vehicle අලුත්වැඩියාව - car, van සහ SUV - පහල යාගොඩ,
                 ගනේමුල්ල. වසර 35කට වැඩි පළපුරුද්දක්.
               </span>
             </p>
@@ -126,8 +126,8 @@ export function Footer() {
             <span className="si">වාහන එන ප්‍රදේශ</span>
           </b>{" "}
           {site.areaServed.join(" · ")}
-          <span className="en"> — and the rest of the Gampaha District.</span>
-          <span className="si"> — සහ ගම්පහ දිස්ත්‍රික්කයේ අනිත් ප්‍රදේශ.</span>
+          <span className="en"> - and the rest of the Gampaha District.</span>
+          <span className="si"> - සහ ගම්පහ දිස්ත්‍රික්කයේ අනිත් ප්‍රදේශ.</span>
         </p>
 
         <div className={s.bottom}>

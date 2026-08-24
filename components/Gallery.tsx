@@ -47,7 +47,7 @@ export function Gallery() {
           </span>
           <h2>
             <span className="en">Work in progress, not stock photos</span>
-            <span className="si">Stock Photo නෙවෙයි — ඇත්ත වැඩ</span>
+            <span className="si">Stock Photo නෙවෙයි - ඇත්ත වැඩ</span>
           </h2>
           <p className={sec.headNote}>
             <span className="en">

@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     template: "%s | Mallawaarachchi Auto Works",
   },
   description:
-    "Light-vehicle repair workshop at Pahala Yagoda, Ganemulla, Gampaha. Engine overhauls, overheating, brakes, clutch and gearbox, suspension, injectors and scanner diagnostics for cars, vans and SUVs — petrol and diesel. Over 35 years, estimate before any work. Call 071 430 9635.",
+    "Light-vehicle repair workshop at Pahala Yagoda, Ganemulla, Gampaha. Engine overhauls, overheating, brakes, clutch and gearbox, suspension, injectors and scanner diagnostics for cars, vans and SUVs - petrol and diesel. Over 35 years, estimate before any work. Call 071 430 9635.",
   applicationName: site.name,
   category: "Automotive repair",
   authors: [{ name: site.name }],
@@ -95,13 +95,13 @@ export const metadata: Metadata = {
     alternateLocale: "si_LK",
     url: "/",
     siteName: site.name,
-    title: "Vehicle Repairs in Ganemulla, Gampaha — Mallawaarachchi Auto Works",
+    title: "Vehicle Repairs in Ganemulla, Gampaha - Mallawaarachchi Auto Works",
     description:
-      "Cars, vans and SUVs, petrol and diesel. Engines, overheating, brakes, gearbox, suspension, injectors and scanner diagnostics — diagnosed before anything is replaced. Over 35 years at Pahala Yagoda, Ganemulla.",
+      "Cars, vans and SUVs, petrol and diesel. Engines, overheating, brakes, gearbox, suspension, injectors and scanner diagnostics - diagnosed before anything is replaced. Over 35 years at Pahala Yagoda, Ganemulla.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vehicle Repairs in Ganemulla, Gampaha — Mallawaarachchi Auto Works",
+    title: "Vehicle Repairs in Ganemulla, Gampaha - Mallawaarachchi Auto Works",
     description:
       "Light-vehicle workshop at Pahala Yagoda, Ganemulla. Engines, overheating, brakes, gearbox, suspension and diagnostics. Over 35 years.",
   },

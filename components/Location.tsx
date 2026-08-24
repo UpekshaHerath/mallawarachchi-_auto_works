@@ -23,12 +23,12 @@ export function Location() {
           <p className={sec.headNote}>
             <span className="en">
               Off the Ganemulla road, minutes from Ganemulla town and an easy
-              run from Gampaha, Yagoda, Kadawatha and Ja-Ela. Drive in — no
+              run from Gampaha, Yagoda, Kadawatha and Ja-Ela. Drive in - no
               appointment needed for a look.
             </span>
             <span className="si">
               ගනේමුල්ල පාරට යාබදව, ගනේමුල්ල නගරයට විනාඩි කිහිපයයි. ගම්පහ,
-              යාගොඩ, කඩවත සහ ජා-ඇල ඉඳන් ලේසියෙන් එන්න පුළුවන්. කෙළින්ම එන්න —
+              යාගොඩ, කඩවත සහ ජා-ඇල ඉඳන් ලේසියෙන් එන්න පුළුවන්. කෙළින්ම එන්න -
               කලින් appointment එකක් ගන්න ඕන නෑ.
             </span>
           </p>

@@ -25,7 +25,7 @@ export const services: Service[] = [
     no: "01",
     title: { en: "Engine Repair & Overhaul", si: "Engine අලුත්වැඩියාව සහ Overhaul" },
     lead: {
-      en: "Full engine work — from a noisy top end to a complete strip-down, rebuild and re-timing.",
+      en: "Full engine work - from a noisy top end to a complete strip-down, rebuild and re-timing.",
       si: "Top end එකේ හඬක් ඉඳන් සම්පූර්ණයෙන් ගලවලා rebuild කරලා timing දාන එක වෙනකම් හැම engine වැඩක්ම.",
     },
     jobs: [
@@ -33,7 +33,7 @@ export const services: Service[] = [
       { en: "Timing belt, timing chain, tensioners & pulleys", si: "Timing belt, timing chain, tensioner සහ pulley" },
       { en: "Piston rings, bearings, valve seals & valve clearance", si: "Piston ring, bearing, valve seal සහ valve clearance" },
       { en: "Compression & leak-down testing before any strip-down", si: "ගලවන්න කලින් compression සහ leak-down test" },
-      { en: "Oil leak tracing — rocker cover, sump, crank & cam seals", si: "Oil leak හොයාගැනීම — rocker cover, sump, crank සහ cam seal" },
+      { en: "Oil leak tracing - rocker cover, sump, crank & cam seals", si: "Oil leak හොයාගැනීම - rocker cover, sump, crank සහ cam seal" },
       { en: "Engine mounts, vibration & rough-idle correction", si: "Engine mount, vibration සහ idle එක හරියට නොයන එක හදනවා" },
     ],
     symptom: {
@@ -91,8 +91,8 @@ export const services: Service[] = [
     no: "04",
     title: { en: "Transmission & Clutch", si: "Gearbox සහ Clutch" },
     lead: {
-      en: "Manual and automatic. We diagnose before we open — most gearbox complaints are not the gearbox.",
-      si: "Manual සහ auto දෙකම. ගලවන්න කලින් check කරනවා — gearbox එක ගැන එන පැමිණිලිවලින් වැඩි ගාණක් ඇත්තටම gearbox එකේ නෙවෙයි.",
+      en: "Manual and automatic. We diagnose before we open - most gearbox complaints are not the gearbox.",
+      si: "Manual සහ auto දෙකම. ගලවන්න කලින් check කරනවා - gearbox එක ගැන එන පැමිණිලිවලින් වැඩි ගාණක් ඇත්තටම gearbox එකේ නෙවෙයි.",
     },
     jobs: [
       { en: "Clutch plate, pressure plate, release bearing & slave cylinder", si: "Clutch plate, pressure plate, release bearing සහ slave cylinder" },
@@ -133,7 +133,7 @@ export const services: Service[] = [
   {
     id: "fuel",
     no: "06",
-    title: { en: "Fuel System — Petrol & Diesel", si: "Fuel System — Petrol සහ Diesel" },
+    title: { en: "Fuel System - Petrol & Diesel", si: "Fuel System - Petrol සහ Diesel" },
     lead: {
       en: "Poor pickup and heavy fuel use usually start here. Injectors come out, get tested, and go back clean.",
       si: "Pickup එක අඩුවීම සහ fuel වැඩියෙන් යන එක ගොඩක් වෙලාවට පටන් ගන්නේ මෙතනින්. Injector ගලවලා, test කරලා, clean කරලා ආපහු දානවා.",
@@ -157,15 +157,15 @@ export const services: Service[] = [
     no: "07",
     title: { en: "Auto Electrical & Diagnostics", si: "Auto Electrical සහ Scanner පරීක්ෂාව" },
     lead: {
-      en: "Scanner first, spanner second. A fault code is a starting point — we still trace the wire.",
-      si: "මුලින්ම scanner එක, ඊට පස්සේ spanner එක. Fault code එකක් කියන්නේ පටන් ගන්න තැනක් විතරයි — wire එක අපි හොයාගෙනම යනවා.",
+      en: "Scanner first, spanner second. A fault code is a starting point - we still trace the wire.",
+      si: "මුලින්ම scanner එක, ඊට පස්සේ spanner එක. Fault code එකක් කියන්නේ පටන් ගන්න තැනක් විතරයි - wire එක අපි හොයාගෙනම යනවා.",
     },
     jobs: [
       { en: "Computer scanning, live data & fault-code tracing", si: "Computer scanning, live data සහ fault code හොයාගැනීම" },
       { en: "Alternator, starter motor & charging faults", si: "Alternator, starter motor සහ charging fault" },
       { en: "Battery testing, terminals & parasitic drain", si: "Battery test, terminal සහ battery බැහැලා යන එක" },
       { en: "Wiring repairs, earth faults & blown-fuse causes", si: "Wiring අලුත්වැඩියාව, earth fault සහ fuse යන එකට හේතුව" },
-      { en: "Sensors — crank, cam, oxygen, coolant temp, ABS", si: "Sensor — crank, cam, oxygen, coolant temp, ABS" },
+      { en: "Sensors - crank, cam, oxygen, coolant temp, ABS", si: "Sensor - crank, cam, oxygen, coolant temp, ABS" },
       { en: "Lights, wipers, power windows, central locking, horn", si: "Light, wiper, power window, central locking, horn" },
     ],
     symptom: {
@@ -186,7 +186,7 @@ export const services: Service[] = [
       { en: "Engine oil & filter, air, fuel and cabin filters", si: "Engine oil සහ filter, air, fuel සහ cabin filter" },
       { en: "Spark plugs, ignition coils & plug-lead checks", si: "Spark plug, ignition coil සහ plug lead පරීක්ෂාව" },
       { en: "Belts, hoses, coolant and brake-fluid condition", si: "Belt, hose, coolant සහ brake fluid තත්ත්වය" },
-      { en: "Underbody inspection on the lift — leaks, bushes, boots", si: "Lift එකේ නංවලා යටින් බැලීම — leak, bush, boot" },
+      { en: "Underbody inspection on the lift - leaks, bushes, boots", si: "Lift එකේ නංවලා යටින් බැලීම - leak, bush, boot" },
       { en: "Pre-trip and pre-purchase check-ups", si: "දුර ගමනකට කලින් සහ වාහනයක් ගන්න කලින් check up" },
       { en: "A written list of what needs doing now vs. later", si: "දැන් කරන්න ඕන දේ සහ පස්සේ කරන්න පුළුවන් දේ ලියලා දෙනවා" },
     ],
@@ -205,8 +205,8 @@ export const processSteps: { no: string; title: Bi; body: Bi }[] = [
     no: "01",
     title: { en: "Call and describe it", si: "Call කරලා ප්‍රශ්නය කියන්න" },
     body: {
-      en: "Tell us the noise, the smell, the warning light — whatever you noticed. We'll say straight away whether it's a drop-off job or something we can look at while you wait.",
-      si: "හඬක්ද, ගඳක්ද, warning light එකක්ද — ඔබට දැනුණු දේ කියන්න. වාහනය තියලා යන්න ඕන වැඩක්ද, නැත්නම් ඔබ ඉන්නකොටම බලන්න පුළුවන් දෙයක්ද කියලා අපි එතනදීම කියනවා.",
+      en: "Tell us the noise, the smell, the warning light - whatever you noticed. We'll say straight away whether it's a drop-off job or something we can look at while you wait.",
+      si: "හඬක්ද, ගඳක්ද, warning light එකක්ද - ඔබට දැනුණු දේ කියන්න. වාහනය තියලා යන්න ඕන වැඩක්ද, නැත්නම් ඔබ ඉන්නකොටම බලන්න පුළුවන් දෙයක්ද කියලා අපි එතනදීම කියනවා.",
     },
   },
   {
@@ -315,7 +315,7 @@ export const reviews: {
     meta: "Local Guide · 30 reviews",
     stars: 5,
     when: "6 years ago",
-    body: "This is one of the repairing garages for Tata Nano — specialists.",
+    body: "This is one of the repairing garages for Tata Nano - specialists.",
   },
 ];
 
@@ -373,8 +373,8 @@ export const faqs: { q: Bi; a: Bi }[] = [
       si: "වැඩපොළ තියෙන්නේ හරියටම කොහෙද?",
     },
     a: {
-      en: "58/04, Pahala Yagoda, Ganemulla — in the Gampaha District, a few minutes from Ganemulla town and an easy run from Gampaha, Yagoda, Kadawatha, Ja-Ela and Nittambuwa. The Google Plus code is 3X5G+XC Ganemulla, and the map on this page opens turn-by-turn directions.",
-      si: "58/04, පහල යාගොඩ, ගනේමුල්ල — ගම්පහ දිස්ත්‍රික්කයේ, ගනේමුල්ල නගරයට විනාඩි කිහිපයයි. ගම්පහ, යාගොඩ, කඩවත, ජා-ඇල සහ නිට්ටඹුව ඉඳන් ලේසියෙන් එන්න පුළුවන්. Google Plus code එක 3X5G+XC Ganemulla. මේ පිටුවේ map එකෙන් directions ගන්න පුළුවන්.",
+      en: "58/04, Pahala Yagoda, Ganemulla - in the Gampaha District, a few minutes from Ganemulla town and an easy run from Gampaha, Yagoda, Kadawatha, Ja-Ela and Nittambuwa. The Google Plus code is 3X5G+XC Ganemulla, and the map on this page opens turn-by-turn directions.",
+      si: "58/04, පහල යාගොඩ, ගනේමුල්ල - ගම්පහ දිස්ත්‍රික්කයේ, ගනේමුල්ල නගරයට විනාඩි කිහිපයයි. ගම්පහ, යාගොඩ, කඩවත, ජා-ඇල සහ නිට්ටඹුව ඉඳන් ලේසියෙන් එන්න පුළුවන්. Google Plus code එක 3X5G+XC Ganemulla. මේ පිටුවේ map එකෙන් directions ගන්න පුළුවන්.",
     },
   },
   {
@@ -383,8 +383,8 @@ export const faqs: { q: Bi; a: Bi }[] = [
       si: "කලින් appointment එකක් ගන්න ඕනද?",
     },
     a: {
-      en: "No. Drive in during working hours and we will look at the vehicle. A call first still helps for bigger jobs — we will tell you straight away whether it is something to leave with us or something we can check while you wait.",
-      si: "නෑ. වැඩ කරන වෙලාවට කෙළින්ම එන්න, වාහනය බලනවා. ලොකු වැඩකට නම් කලින් call එකක් දුන්නොත් හොඳයි — වාහනය තියලා යන්න ඕන වැඩක්ද, නැත්නම් ඔබ ඉන්නකොටම බලන්න පුළුවන් දෙයක්ද කියලා එතනදීම කියනවා.",
+      en: "No. Drive in during working hours and we will look at the vehicle. A call first still helps for bigger jobs - we will tell you straight away whether it is something to leave with us or something we can check while you wait.",
+      si: "නෑ. වැඩ කරන වෙලාවට කෙළින්ම එන්න, වාහනය බලනවා. ලොකු වැඩකට නම් කලින් call එකක් දුන්නොත් හොඳයි - වාහනය තියලා යන්න ඕන වැඩක්ද, නැත්නම් ඔබ ඉන්නකොටම බලන්න පුළුවන් දෙයක්ද කියලා එතනදීම කියනවා.",
     },
   },
   {
@@ -393,8 +393,8 @@ export const faqs: { q: Bi; a: Bi }[] = [
       si: "මොන වගේ වාහනද හදන්නේ?",
     },
     a: {
-      en: "Light vehicles — cars, vans, SUVs and jeeps, cabs and double cabs, petrol and diesel. Toyota, Nissan, Honda, Mitsubishi, Suzuki, Mazda, Subaru, Isuzu, Daihatsu, Tata, Micro and Perodua are all regulars in the yard.",
-      si: "Light vehicle — car, van, SUV සහ jeep, cab සහ double cab, petrol සහ diesel දෙකම. Toyota, Nissan, Honda, Mitsubishi, Suzuki, Mazda, Subaru, Isuzu, Daihatsu, Tata, Micro සහ Perodua නිතරම වැඩපොළේ තියෙනවා.",
+      en: "Light vehicles - cars, vans, SUVs and jeeps, cabs and double cabs, petrol and diesel. Toyota, Nissan, Honda, Mitsubishi, Suzuki, Mazda, Subaru, Isuzu, Daihatsu, Tata, Micro and Perodua are all regulars in the yard.",
+      si: "Light vehicle - car, van, SUV සහ jeep, cab සහ double cab, petrol සහ diesel දෙකම. Toyota, Nissan, Honda, Mitsubishi, Suzuki, Mazda, Subaru, Isuzu, Daihatsu, Tata, Micro සහ Perodua නිතරම වැඩපොළේ තියෙනවා.",
     },
   },
   {
@@ -403,8 +403,8 @@ export const faqs: { q: Bi; a: Bi }[] = [
       si: "වැඩ පටන් ගන්න කලින් වියදම දැනගන්න පුළුවන්ද?",
     },
     a: {
-      en: "Yes. The vehicle is diagnosed first — road test, scanner, hands on it — and then you get the estimate: what is wrong, what it takes to fix, what the parts cost and how long it will hold. Nothing is opened up before you agree to it.",
-      si: "ඔව්. මුලින්ම fault එක හොයාගන්නවා — road test එකක්, scanner එක, අතින්ම බැලීමක්. ඊට පස්සේ estimate එක දෙනවා: වැරදිලා තියෙන්නේ මොකක්ද, හදන්න ඕන මොනවද, part වලට කීයක් යනවද, කොච්චර කල් යයිද. ඔබ එකඟ වෙනකම් කිසිම දෙයක් ගලවන්නේ නෑ.",
+      en: "Yes. The vehicle is diagnosed first - road test, scanner, hands on it - and then you get the estimate: what is wrong, what it takes to fix, what the parts cost and how long it will hold. Nothing is opened up before you agree to it.",
+      si: "ඔව්. මුලින්ම fault එක හොයාගන්නවා - road test එකක්, scanner එක, අතින්ම බැලීමක්. ඊට පස්සේ estimate එක දෙනවා: වැරදිලා තියෙන්නේ මොකක්ද, හදන්න ඕන මොනවද, part වලට කීයක් යනවද, කොච්චර කල් යයිද. ඔබ එකඟ වෙනකම් කිසිම දෙයක් ගලවන්නේ නෑ.",
     },
   },
   {
@@ -413,8 +413,8 @@ export const faqs: { q: Bi; a: Bi }[] = [
       si: "Part මමම හොයාගන්න ඕනද?",
     },
     a: {
-      en: "No — we source them. You do not have to run around Panchikawatta. We will also tell you honestly when a genuine part is worth the money and when a good aftermarket one will do the same job.",
-      si: "නෑ — part අපිම හොයාගන්නවා. පංචිකාවත්තේ දුවන්න ඕන නෑ. Genuine part එකක් සල්ලි වටිනවද, නැත්නම් හොඳ aftermarket එකකින් හරි යනවද කියලත් අවංකව කියනවා.",
+      en: "No - we source them. You do not have to run around Panchikawatta. We will also tell you honestly when a genuine part is worth the money and when a good aftermarket one will do the same job.",
+      si: "නෑ - part අපිම හොයාගන්නවා. පංචිකාවත්තේ දුවන්න ඕන නෑ. Genuine part එකක් සල්ලි වටිනවද, නැත්නම් හොඳ aftermarket එකකින් හරි යනවද කියලත් අවංකව කියනවා.",
     },
   },
   {
@@ -423,8 +423,8 @@ export const faqs: { q: Bi; a: Bi }[] = [
       si: "වාහනය නිතරම overheat වෙනවා, හේතුව කාටවත් හොයාගන්න බැරි වුණා. පුළුවන්ද?",
     },
     a: {
-      en: "That is one of the most common reasons vehicles arrive here after being somewhere else. Overheating is a symptom, not a fault — the radiator, thermostat, water pump, fan circuit, pressure cap and head gasket are all tested before anything is replaced, so you are not paying for parts that were never the problem.",
-      si: "වෙන තැනකට ගිහින් මෙතනට එන වාහනවල නිතරම එන ප්‍රශ්නයක් තමයි ඒක. Overheat වීම කියන්නේ ලක්ෂණයක් මිසක් fault එක නෙවෙයි — radiator, thermostat, water pump, fan circuit, pressure cap සහ head gasket ඔක්කොම test කරලා තමයි මොනවහරි මාරු කරන්නේ. ප්‍රශ්නය නොවුණු part වලට සල්ලි යන්නේ නෑ.",
+      en: "That is one of the most common reasons vehicles arrive here after being somewhere else. Overheating is a symptom, not a fault - the radiator, thermostat, water pump, fan circuit, pressure cap and head gasket are all tested before anything is replaced, so you are not paying for parts that were never the problem.",
+      si: "වෙන තැනකට ගිහින් මෙතනට එන වාහනවල නිතරම එන ප්‍රශ්නයක් තමයි ඒක. Overheat වීම කියන්නේ ලක්ෂණයක් මිසක් fault එක නෙවෙයි - radiator, thermostat, water pump, fan circuit, pressure cap සහ head gasket ඔක්කොම test කරලා තමයි මොනවහරි මාරු කරන්නේ. ප්‍රශ්නය නොවුණු part වලට සල්ලි යන්නේ නෑ.",
     },
   },
   {
@@ -433,8 +433,8 @@ export const faqs: { q: Bi; a: Bi }[] = [
       si: "Computer scanning සහ fault code පරීක්ෂාව කරනවද?",
     },
     a: {
-      en: "Yes — scanner, live data and fault-code tracing, on petrol and diesel. A code only says where to start looking, so the wiring, earths and sensors are still traced by hand before anything is condemned.",
-      si: "ඔව් — scanner එක, live data සහ fault code හොයාගැනීම, petrol සහ diesel දෙකටම. Code එකකින් කියවෙන්නේ කොහෙන් හොයන්න පටන් ගන්නද කියන එක විතරයි. Wiring, earth සහ sensor අතින්ම check කරලා තමයි තීරණයකට එන්නේ.",
+      en: "Yes - scanner, live data and fault-code tracing, on petrol and diesel. A code only says where to start looking, so the wiring, earths and sensors are still traced by hand before anything is condemned.",
+      si: "ඔව් - scanner එක, live data සහ fault code හොයාගැනීම, petrol සහ diesel දෙකටම. Code එකකින් කියවෙන්නේ කොහෙන් හොයන්න පටන් ගන්නද කියන එක විතරයි. Wiring, earth සහ sensor අතින්ම check කරලා තමයි තීරණයකට එන්නේ.",
     },
   },
   {
@@ -443,8 +443,8 @@ export const faqs: { q: Bi; a: Bi }[] = [
       si: "පාවිච්චි කරපු වාහනයක් ගන්න කලින් check කරලා දෙන්න පුළුවන්ද?",
     },
     a: {
-      en: "Yes. A pre-purchase check-up puts the vehicle on the lift for an underbody look — leaks, bushes, boots, brakes and engine condition — and you get a written list of what needs doing now and what can wait. The same check is worth doing before a long trip.",
-      si: "ඔව්. Lift එකේ නංවලා යටින් බලනවා — leak, bush, boot, brake සහ engine එකේ තත්ත්වය. දැන් කරන්න ඕන දේ සහ පස්සේ කරන්න පුළුවන් දේ ලියලා දෙනවා. දුර ගමනකට කලින්ත් මේ check එක කරගන්න එක වටිනවා.",
+      en: "Yes. A pre-purchase check-up puts the vehicle on the lift for an underbody look - leaks, bushes, boots, brakes and engine condition - and you get a written list of what needs doing now and what can wait. The same check is worth doing before a long trip.",
+      si: "ඔව්. Lift එකේ නංවලා යටින් බලනවා - leak, bush, boot, brake සහ engine එකේ තත්ත්වය. දැන් කරන්න ඕන දේ සහ පස්සේ කරන්න පුළුවන් දේ ලියලා දෙනවා. දුර ගමනකට කලින්ත් මේ check එක කරගන්න එක වටිනවා.",
     },
   },
   {

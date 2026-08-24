@@ -65,13 +65,13 @@ export function Contact() {
             </h2>
             <p>
               <span className="en">
-                Describe the symptom in your own words — the sound, when it
+                Describe the symptom in your own words - the sound, when it
                 happens, what changed. That is usually enough for us to tell you
                 on the phone whether it&rsquo;s a small job or one that needs
                 the vehicle left with us.
               </span>
               <span className="si">
-                ඔබේම වචනවලින් ප්‍රශ්නය කියන්න — මොන වගේ හඬක්ද, කවදද ඒක වෙන්නේ,
+                ඔබේම වචනවලින් ප්‍රශ්නය කියන්න - මොන වගේ හඬක්ද, කවදද ඒක වෙන්නේ,
                 මොකද වෙනස් වුණේ. පොඩි වැඩක්ද නැත්නම් වාහනය තියලා යන්න වෙන
                 එකක්ද කියලා phone එකෙන්ම කියන්න අපිට ඒක ඇති.
               </span>

@@ -24,7 +24,7 @@ export function buildJsonLd() {
     name: site.name,
     alternateName: "Mallawaarachchi Auto Works Ganemulla",
     description:
-      "Light-vehicle repair workshop in Pahala Yagoda, Ganemulla, Gampaha District — engine overhauls, overheating and cooling faults, brakes, clutch and gearbox, suspension, fuel systems, auto electrical and scanner diagnostics for cars, vans and SUVs. Over 35 years in the trade.",
+      "Light-vehicle repair workshop in Pahala Yagoda, Ganemulla, Gampaha District - engine overhauls, overheating and cooling faults, brakes, clutch and gearbox, suspension, fuel systems, auto electrical and scanner diagnostics for cars, vans and SUVs. Over 35 years in the trade.",
     slogan: site.tagline.en,
     url,
     telephone: site.phones.map((p) => p.e164),
@@ -119,7 +119,7 @@ export function buildJsonLd() {
     "@type": "WebPage",
     "@id": id("webpage"),
     url,
-    name: "Vehicle Repairs in Ganemulla, Gampaha — Mallawaarachchi Auto Works",
+    name: "Vehicle Repairs in Ganemulla, Gampaha - Mallawaarachchi Auto Works",
     isPartOf: { "@id": id("website") },
     about: { "@id": id("workshop") },
     primaryImageOfPage: abs("/img/hero-1400.jpg"),

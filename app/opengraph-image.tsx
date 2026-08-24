@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
 
 export const alt =
-  "Mallawaarachchi Auto Works — car, van and SUV repairs in Ganemulla";
+  "Mallawaarachchi Auto Works - car, van and SUV repairs in Ganemulla";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
