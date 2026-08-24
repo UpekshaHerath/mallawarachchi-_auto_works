@@ -33,7 +33,7 @@
      technical words keep the site's own typography and only Sinhala
      codepoints fall through to Noto, which is the one face that has them. */
   --f-si: var(--font-body), var(--font-sinhala), sans-serif;
-  --f-si-display: var(--font-condensed), var(--font-sinhala), sans-serif;
+  --f-si-display: var(--font-condensed), var(--font-sinhala-display), sans-serif;
 
   /* rhythm */
   --gutter: clamp(1.25rem, 4vw, 4.5rem);
@@ -107,18 +107,29 @@ a {
   display: none;
 }
 /*
- * Only the family is set here. A line-height on .si would apply to the inline
- * span *inside* a heading, giving it a taller line box than the heading it
- * sits in — which is what blew the headline apart. Leading is set on the
- * block elements below instead, so the span simply inherits it.
+ * Nothing typographic is set on .si itself. It is an inline span sitting
+ * inside headings, buttons and labels, so anything declared here wins over
+ * the block that contains it — a line-height here blew the headline apart,
+ * and a font-family here forced the body face onto every heading, which is
+ * why the Sinhala side had no display/text contrast at all.
+ *
+ * Family, leading and tracking are set on the block elements below and the
+ * span simply inherits whichever is appropriate.
  */
-.si {
-  font-family: var(--f-si);
-  letter-spacing: 0;
-}
 [data-lang="si"] body {
   font-family: var(--f-si);
   line-height: 1.74;
+}
+
+/*
+ * Sinhala is an abugida — its consonants carry vowel signs above, below and
+ * beside them, so the wide Latin tracking used on small caps labels pulls the
+ * clusters apart and hurts legibility. Anything that is only ever Latin
+ * (numerals, "WhatsApp", "Scroll") keeps its tracking; a span that actually
+ * holds Sinhala gets it dialled back.
+ */
+[data-lang="si"] .si {
+  letter-spacing: 0.02em;
 }
 
 /* ---------- typography ---------- */
@@ -135,7 +146,7 @@ h4 {
 [data-lang="si"] :where(h1, h2, h3, h4) {
   font-family: var(--f-si-display);
   font-weight: 700;
-  line-height: 1.14;
+  line-height: 1.1;
   letter-spacing: 0;
 }
 h1 {
@@ -151,18 +162,19 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
-/* Noto Sinhala runs optically larger than Barlow Condensed at the same px,
-   and the strings are longer, so each level steps down a notch. Uppercase is
-   kept: it only affects the Latin half, which is exactly the effect we want. */
+/* Gemunu is condensed like Barlow Condensed, so the Sinhala headings can now
+   run close to the English sizes — the old step-down existed to compensate for
+   Noto being much wider at the same px. Uppercase stays: it only affects the
+   Latin half, which is exactly the effect we want. */
 [data-lang="si"] h1 {
-  font-size: clamp(2.3rem, 6.8vw, 5.1rem);
+  font-size: clamp(2.6rem, 7.8vw, 5.9rem);
 }
 [data-lang="si"] h2 {
-  font-size: clamp(1.7rem, 4.2vw, 2.9rem);
+  font-size: clamp(1.9rem, 4.9vw, 3.5rem);
 }
 [data-lang="si"] h3 {
-  font-size: clamp(1.1rem, 1.9vw, 1.35rem);
-  line-height: 1.2;
+  font-size: clamp(1.2rem, 2.1vw, 1.5rem);
+  line-height: 1.16;
 }
 p {
   text-wrap: pretty;
