@@ -26,16 +26,16 @@ export function Services() {
           </span>
           <h2>
             <span className="en">All the running repairs, in one yard</span>
-            <span className="si">හැම Running Repair එකක්ම එකම මිදුලක</span>
+            <span className="si">හැම Running Repair එකක්ම එකම තැනකින්</span>
           </h2>
           <p className={s.headNote}>
             <span className="en">
-              Cars, vans and SUVs — petrol and diesel. If it moves the vehicle,
+              Cars, vans and SUVs - petrol and diesel. If it moves the vehicle,
               stops it, cools it or powers it, it is repaired here. Open any
               heading to see the individual jobs that fall under it.
             </span>
             <span className="si">
-              Car, van සහ SUV — petrol සහ diesel දෙකම. වාහනය දුවවන, නවත්වන,
+              Car, van සහ SUV - petrol සහ diesel දෙකම. වාහනය දුවවන, නවත්වන,
               සිසිල් කරන නැත්නම් power දෙන ඕනෑම කොටසක් මෙතන හදනවා. එක් එක්
               වැඩ මොනවද කියලා බලන්න පහළින් open කරන්න.
             </span>

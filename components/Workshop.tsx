@@ -7,7 +7,7 @@ import sec from "./Sections.module.css";
 const FACTS = [
   {
     Icon: WrenchIcon,
-    en: "Two-post lifts, hydraulic press and a proper tool wall — the vehicle goes up so the fault can actually be seen, not felt for from the ground.",
+    en: "Two-post lifts, hydraulic press and a proper tool wall - the vehicle goes up so the fault can actually be seen, not felt for from the ground.",
     si: "Two-post lift, hydraulic press සහ පිරුණු tool wall එකක්. බිම ඉඳන් අතගාමින් හොයනවා වෙනුවට වාහනය උස්සලා fault එක ඇස්වලින්ම බලනවා.",
   },
   {
@@ -22,8 +22,8 @@ const FACTS = [
   },
   {
     Icon: ClockIcon,
-    en: "Most running repairs are turned around the same day. Bigger jobs get a realistic date — not an optimistic one.",
-    si: "ගොඩක් running repair එදිනම ඉවර කරනවා. ලොකු වැඩවලට ඇත්ත දිනයක් දෙනවා — ඔබව සතුටු කරන්න කියන දිනයක් නෙවෙයි.",
+    en: "Most running repairs are turned around the same day. Bigger jobs get a realistic date - not an optimistic one.",
+    si: "ගොඩක් running repair එදිනම ඉවර කරනවා. ලොකු වැඩවලට ඇත්ත දිනයක් දෙනවා - ඔබව සතුටු කරන්න කියන දිනයක් නෙවෙයි.",
   },
 ];
 
@@ -58,13 +58,14 @@ export function Workshop() {
 
             <p className={s.pull}>
               <span className="en">
-                A lot of the vehicles that arrive here have already been
-                somewhere else — and often the part that was replaced was never
-                the problem.
+                Every vehicle here is checked properly before anything is
+                opened up - we find the real cause first, so the repair holds
+                and you only pay for the work that was needed.
               </span>
               <span className="si">
-                මෙතනට එන ගොඩක් වාහන දැනටමත් වෙන තැනකට ගිහින් තියෙනවා — ගොඩක්
-                වෙලාවට මාරු කරලා තියෙන part එක ඇත්තටම ප්‍රශ්නය නෙවෙයි.
+                මෙතන හැම වාහනයක්ම වැඩේ පටන් ගන්න කලින් හොඳට check කරනවා - ඇත්ත
+                ප්‍රශ්නය හොයාගෙනයි වැඩේ කරන්නේ. ඒ නිසා හදන වැඩේ හරියට හැදෙනව,
+                ඕන නැති part එකකට ගෙවන්නත් වෙන්නේ නෑ.
               </span>
             </p>
 
@@ -72,14 +73,14 @@ export function Workshop() {
               <span className="en">
                 Mallawaarachchi Auto Works has been repairing light vehicles at
                 Pahala Yagoda in Ganemulla for over thirty-five years. It grew
-                the way workshops in this country actually grow — one repair at
+                the way workshops in this country actually grow - one repair at
                 a time, on vehicles owned by neighbours who come back and send
                 their families.
               </span>
               <span className="si">
                 Mallawaarachchi Auto Works, ගනේමුල්ල පහල යාගොඩ වසර 35කට වැඩි
                 කාලයක් තිස්සේ light vehicle හදනවා. මේක හැදුණේ අපේ රටේ workshop
-                හැදෙන විදිහටමයි — එකින් එක වැඩෙන්, ආපහු ආපහු එන ගමේ
+                හැදෙන විදිහටමයි - එකින් එක වැඩෙන්, ආපහු ආපහු එන ගමේ
                 customer ලාගෙන්.
               </span>
             </p>
@@ -125,12 +126,12 @@ export function Workshop() {
 
           <p className={s.bandNote}>
             <span className="en">
-              Brand isn&rsquo;t the deciding factor — if it&rsquo;s a light
+              Brand isn&rsquo;t the deciding factor - if it&rsquo;s a light
               vehicle and parts can be sourced, bring it in. Heavy trucks and
               buses are the one thing we don&rsquo;t take.
             </span>
             <span className="si">
-              Brand එක ප්‍රශ්නයක් නෙවෙයි — light vehicle එකක් නම්, part
+              Brand එක ප්‍රශ්නයක් නෙවෙයි - light vehicle එකක් නම්, part
               ගෙන්නගන්න පුළුවන් නම්, ගේන්න. අපි බාර නොගන්න එකම දේ බර truck සහ
               bus විතරයි.
             </span>

@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Barlow_Condensed, Noto_Sans_Sinhala } from "next/font/google";
+import {
+  Barlow,
+  Barlow_Condensed,
+  Gemunu_Libre,
+  Noto_Sans_Sinhala,
+} from "next/font/google";
 import { site } from "@/lib/site";
 import { resolveSiteUrl } from "@/lib/url";
 import { buildJsonLd } from "@/lib/seo";
@@ -19,9 +24,27 @@ const condensed = Barlow_Condensed({
   display: "swap",
 });
 
-// Sinhala has a large glyph set (~130 KB). It is never preloaded: the hidden
-// Sinhala spans don't trigger a download, so English visitors never pay for it
-// and the file only arrives when someone switches the toggle.
+/*
+ * Sinhala gets the same two-tier treatment as English: a display face for
+ * headings and UI labels, a text face for prose. Running everything in Noto
+ * left the Sinhala side flat next to the English, which has Barlow Condensed
+ * over Barlow.
+ *
+ * Gemunu Libre is the Sinhala counterpart to Barlow Condensed — narrow,
+ * upright, engineered rather than calligraphic — so a mixed heading like
+ * "ENGINE අලුත්වැඩියාව" holds one voice across both scripts.
+ *
+ * Neither is preloaded: the hidden Sinhala spans don't trigger a download, so
+ * English visitors never pay for either file.
+ */
+const sinhalaDisplay = Gemunu_Libre({
+  subsets: ["sinhala"],
+  weight: ["600", "700", "800"],
+  variable: "--font-sinhala-display",
+  display: "swap",
+  preload: false,
+});
+
 const sinhala = Noto_Sans_Sinhala({
   subsets: ["sinhala"],
   weight: ["400", "700"],
@@ -40,7 +63,7 @@ export const metadata: Metadata = {
     template: "%s | Mallawaarachchi Auto Works",
   },
   description:
-    "Light-vehicle repair workshop at Pahala Yagoda, Ganemulla, Gampaha. Engine overhauls, overheating, brakes, clutch and gearbox, suspension, injectors and scanner diagnostics for cars, vans and SUVs — petrol and diesel. Over 35 years, estimate before any work. Call 071 430 9635.",
+    "Light-vehicle repair workshop at Pahala Yagoda, Ganemulla, Gampaha. Engine overhauls, overheating, brakes, clutch and gearbox, suspension, injectors and scanner diagnostics for cars, vans and SUVs - petrol and diesel. Over 35 years, estimate before any work. Call 071 430 9635.",
   applicationName: site.name,
   category: "Automotive repair",
   authors: [{ name: site.name }],
@@ -72,13 +95,13 @@ export const metadata: Metadata = {
     alternateLocale: "si_LK",
     url: "/",
     siteName: site.name,
-    title: "Vehicle Repairs in Ganemulla, Gampaha — Mallawaarachchi Auto Works",
+    title: "Vehicle Repairs in Ganemulla, Gampaha - Mallawaarachchi Auto Works",
     description:
-      "Cars, vans and SUVs, petrol and diesel. Engines, overheating, brakes, gearbox, suspension, injectors and scanner diagnostics — diagnosed before anything is replaced. Over 35 years at Pahala Yagoda, Ganemulla.",
+      "Cars, vans and SUVs, petrol and diesel. Engines, overheating, brakes, gearbox, suspension, injectors and scanner diagnostics - diagnosed before anything is replaced. Over 35 years at Pahala Yagoda, Ganemulla.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vehicle Repairs in Ganemulla, Gampaha — Mallawaarachchi Auto Works",
+    title: "Vehicle Repairs in Ganemulla, Gampaha - Mallawaarachchi Auto Works",
     description:
       "Light-vehicle workshop at Pahala Yagoda, Ganemulla. Engines, overheating, brakes, gearbox, suspension and diagnostics. Over 35 years.",
   },
@@ -124,7 +147,7 @@ export default function RootLayout({
       lang="en"
       data-lang="en"
       suppressHydrationWarning
-      className={`${body.variable} ${condensed.variable} ${sinhala.variable}`}
+      className={`${body.variable} ${condensed.variable} ${sinhala.variable} ${sinhalaDisplay.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: langBoot }} />

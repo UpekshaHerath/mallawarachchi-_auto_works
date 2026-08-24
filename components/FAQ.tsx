@@ -21,11 +21,11 @@ export function FAQ() {
           </h2>
           <p className={s.headNote}>
             <span className="en">
-              Appointments, estimates, spare parts and opening hours — the
+              Appointments, estimates, spare parts and opening hours - the
               things people ask on the phone before they drive to Ganemulla.
             </span>
             <span className="si">
-              Appointment, estimate, part සහ වෙලාවන් — ගනේමුල්ලට එන්න කලින්
+              Appointment, estimate, part සහ වෙලාවන් - ගනේමුල්ලට එන්න කලින්
               phone එකෙන් අහන දේවල්.
             </span>
           </p>

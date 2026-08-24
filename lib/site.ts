@@ -2,8 +2,8 @@ export const site = {
   name: "Mallawaarachchi Auto Works",
   shortName: "Mallawaarachchi Auto Works",
   tagline: {
-    en: "Light-vehicle repairs, done properly — for over 35 years.",
-    si: "Light vehicle අලුත්වැඩියාව, හරියටම — වසර 35කට වැඩි කාලයක්.",
+    en: "Light-vehicle repairs, done properly - for over 35 years.",
+    si: "Light vehicle අලුත්වැඩියාව, හරියටම - වසර 35කට වැඩි කාලයක්.",
   },
   yearsInTrade: 35,
   url: "https://mallawaarachchiautoworks.lk",
