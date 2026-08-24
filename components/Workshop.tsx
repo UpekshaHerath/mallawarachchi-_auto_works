@@ -58,13 +58,14 @@ export function Workshop() {
 
             <p className={s.pull}>
               <span className="en">
-                A lot of the vehicles that arrive here have already been
-                somewhere else — and often the part that was replaced was never
-                the problem.
+                Every vehicle here is checked properly before anything is
+                opened up — we find the real cause first, so the repair holds
+                and you only pay for the work that was needed.
               </span>
               <span className="si">
-                මෙතනට එන ගොඩක් වාහන දැනටමත් වෙන තැනකට ගිහින් තියෙනවා — ගොඩක්
-                වෙලාවට මාරු කරලා තියෙන part එක ඇත්තටම ප්‍රශ්නය නෙවෙයි.
+                මෙතන හැම වාහනයක්ම වැඩේ පටන් ගන්න කලින් හොඳට check කරනවා - ඇත්ත
+                ප්‍රශ්නය හොයාගෙනයි වැඩේ කරන්නේ. ඒ නිසා හදන වැඩේ හරියට හැදෙනව,
+                ඕන නැති part එකකට ගෙවන්නත් වෙන්නේ නෑ.
               </span>
             </p>
 

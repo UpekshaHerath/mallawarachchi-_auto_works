@@ -26,7 +26,7 @@ export function Services() {
           </span>
           <h2>
             <span className="en">All the running repairs, in one yard</span>
-            <span className="si">හැම Running Repair එකක්ම එකම මිදුලක</span>
+            <span className="si">හැම Running Repair එකක්ම එකම තැනකින්</span>
           </h2>
           <p className={s.headNote}>
             <span className="en">

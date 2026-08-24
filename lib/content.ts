@@ -335,7 +335,7 @@ export const galleryImages: { name: MediaName; alt: Bi }[] = [
   { name: "g-13", alt: { en: "Engine bay opened up for diagnosis", si: "Check කරන්න විවෘත කරපු engine bay එකක්" } },
   { name: "g-14", alt: { en: "Turbo engine bay under inspection", si: "පරීක්ෂා කරන turbo engine bay එකක්" } },
   { name: "g-15", alt: { en: "Hatchback up on the lift with a wheel off for suspension work", si: "Suspension වැඩක් සඳහා රෝදයක් ගලවා lift එකේ ඔසවා ඇති hatchback එකක්" } },
-  { name: "g-17", alt: { en: "Customer vehicles waiting in the yard", si: "මිදුලේ රැඳිලා ඉන්න customer වාහන" } },
+  { name: "g-17", alt: { en: "Customer vehicles waiting in the yard", si: "වැඩපොළේ රැඳිලා ඉන්න customer වාහන" } },
   { name: "g-18", alt: { en: "Suspension and drivetrain components from below", si: "යටින් පේන suspension සහ drivetrain කොටස්" } },
 ];
 
@@ -394,7 +394,7 @@ export const faqs: { q: Bi; a: Bi }[] = [
     },
     a: {
       en: "Light vehicles — cars, vans, SUVs and jeeps, cabs and double cabs, petrol and diesel. Toyota, Nissan, Honda, Mitsubishi, Suzuki, Mazda, Subaru, Isuzu, Daihatsu, Tata, Micro and Perodua are all regulars in the yard.",
-      si: "Light vehicle — car, van, SUV සහ jeep, cab සහ double cab, petrol සහ diesel දෙකම. Toyota, Nissan, Honda, Mitsubishi, Suzuki, Mazda, Subaru, Isuzu, Daihatsu, Tata, Micro සහ Perodua නිතරම මිදුලේ තියෙනවා.",
+      si: "Light vehicle — car, van, SUV සහ jeep, cab සහ double cab, petrol සහ diesel දෙකම. Toyota, Nissan, Honda, Mitsubishi, Suzuki, Mazda, Subaru, Isuzu, Daihatsu, Tata, Micro සහ Perodua නිතරම වැඩපොළේ තියෙනවා.",
     },
   },
   {
