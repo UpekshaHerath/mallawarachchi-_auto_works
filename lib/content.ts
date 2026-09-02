@@ -336,6 +336,7 @@ export const galleryImages: { name: MediaName; alt: Bi }[] = [
   { name: "g-14", alt: { en: "Turbo engine bay under inspection", si: "පරීක්ෂා කරන turbo engine bay එකක්" } },
   { name: "g-15", alt: { en: "Hatchback up on the lift with a wheel off for suspension work", si: "Suspension වැඩක් සඳහා රෝදයක් ගලවා lift එකේ ඔසවා ඇති hatchback එකක්" } },
   { name: "g-17", alt: { en: "Customer vehicles waiting in the yard", si: "වැඩපොළේ රැඳිලා ඉන්න customer වාහන" } },
+  { name: "g-19", alt: { en: "Vehicles parked in the yard beside the covered work bays", si: "වහලය යට work bay ළඟ වැඩපොළේ නවත්තලා තියෙන වාහන" } },
   { name: "g-18", alt: { en: "Suspension and drivetrain components from below", si: "යටින් පේන suspension සහ drivetrain කොටස්" } },
 ];
 

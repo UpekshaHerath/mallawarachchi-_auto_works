@@ -45,7 +45,6 @@ const SET = [
     region: { left: 200, top: 0, width: 720, height: 1200 },
   },
   { name: "master-at-work", file: "p17.jpg", ratio: 4 / 3, widths: [480, 800, 1200] },
-  { name: "yard-wide", file: "p01.jpg", ratio: 2 / 1, widths: [640, 1280] },
 
   // service cards (4:3)
   { name: "svc-engine", file: "p24.jpg" },
@@ -75,6 +74,9 @@ const SET = [
   { name: "g-15", file: "p03.jpg" },
   // g-16 (p16.jpg) dropped — outbuilding wall, not workshop work.
   { name: "g-17", file: "p37.jpg" },
+  // p01 was the 2:1 "yard-wide" plate, rendered nowhere; rebuilt as a 4:3
+  // gallery tile so the lightbox's 700/1100 derivatives exist.
+  { name: "g-19", file: "p01.jpg" },
   { name: "g-18", file: "p12.jpg" },
 ];
 

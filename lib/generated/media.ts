@@ -41,16 +41,6 @@ export const media = {
     "height": 900,
     "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAwCdASoUAA8APxFysFAsJqSisAgBgCIJYwC2yBQ7gefkZ+DZE1gA37GT8BmSbbCdi2NpynkuwVFk4xdBuM/cL2kaF29xXuSbW4AA"
   },
-  "yard-wide": {
-    "widths": [
-      640,
-      1280
-    ],
-    "ratio": 2,
-    "width": 1280,
-    "height": 640,
-    "lqip": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACwAwCdASoUAAoAPxFyslCsJqSisAgBgCIJZwAAUz5BRLnxZ74EAAD9OFjKg7uanAVYuW1DTUHLyomKrFhQAA=="
-  },
   "svc-engine": {
     "widths": [
       400,
@@ -314,6 +304,17 @@ export const media = {
     "width": 1100,
     "height": 825,
     "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQBACdASoUAA8APxF0slCsJqSisAgBgCIJYwC+SB9EE60yI+ekztXTAAD+G/PUr80kzbWmae6EYzT2TRJL4kJUBrYuoo0E7eL7BfP1i0ph3dt+OgQwAA=="
+  },
+  "g-19": {
+    "widths": [
+      400,
+      700,
+      1100
+    ],
+    "ratio": 1.3333,
+    "width": 1100,
+    "height": 825,
+    "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAwCdASoUAA8APxFwsFAsJiSisAgBgCIJZQAALYeIebUsdCgA9l6uPJg914uXaT10Pf94IRNJJHfpJjPqZ6ZM5GRi1FRkv1jJkb3bIAA="
   },
   "g-18": {
     "widths": [
