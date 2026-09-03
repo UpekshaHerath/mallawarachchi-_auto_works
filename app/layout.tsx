@@ -129,22 +129,21 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  // Follows the OS preference; an explicit choice re-writes this tag at
-  // runtime (components/ThemeToggle.tsx).
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0b0d10" },
-    { media: "(prefers-color-scheme: light)", color: "#f2efe7" },
-  ],
+  // The paper default in the markup; the boot script and the toggle re-write
+  // this tag at runtime once the real theme is known
+  // (components/ThemeToggle.tsx).
+  themeColor: "#f2efe7",
   width: "device-width",
   initialScale: 1,
 };
 
 /*
  * Restores the language and theme choices before first paint so there is no
- * flash. With no stored theme the attribute stays off and CSS falls through
- * to prefers-color-scheme, so this stays a one-line read either way.
+ * flash. With no stored theme it falls back to the OS preference, and to
+ * paper when the OS has no opinion (or the query is unsupported), so
+ * data-theme is always stamped by the time the first paint happens.
  */
-const boot = `(function(){try{var d=document.documentElement;var l=localStorage.getItem("maw-lang");if(l==="si"||l==="en"){d.setAttribute("data-lang",l);d.setAttribute("lang",l);}var t=localStorage.getItem("maw-theme");if(t==="light"||t==="dark"){d.setAttribute("data-theme",t);}}catch(e){}})();`;
+const boot = `(function(){try{var d=document.documentElement;var l=localStorage.getItem("maw-lang");if(l==="si"||l==="en"){d.setAttribute("data-lang",l);d.setAttribute("lang",l);}var t=localStorage.getItem("maw-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}d.setAttribute("data-theme",t);d.setAttribute("data-theme-source",localStorage.getItem("maw-theme")?"user":"system");}catch(e){}})();`;
 
 export default function RootLayout({
   children,
