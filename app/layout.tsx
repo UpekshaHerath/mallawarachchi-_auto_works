@@ -129,13 +129,22 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b0d10",
+  // Follows the OS preference; an explicit choice re-writes this tag at
+  // runtime (components/ThemeToggle.tsx).
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0b0d10" },
+    { media: "(prefers-color-scheme: light)", color: "#f2efe7" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
 
-/* Restores the language choice before first paint so there is no flash. */
-const langBoot = `(function(){try{var l=localStorage.getItem("maw-lang");if(l==="si"||l==="en"){var d=document.documentElement;d.setAttribute("data-lang",l);d.setAttribute("lang",l);}}catch(e){}})();`;
+/*
+ * Restores the language and theme choices before first paint so there is no
+ * flash. With no stored theme the attribute stays off and CSS falls through
+ * to prefers-color-scheme, so this stays a one-line read either way.
+ */
+const boot = `(function(){try{var d=document.documentElement;var l=localStorage.getItem("maw-lang");if(l==="si"||l==="en"){d.setAttribute("data-lang",l);d.setAttribute("lang",l);}var t=localStorage.getItem("maw-theme");if(t==="light"||t==="dark"){d.setAttribute("data-theme",t);}}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -150,7 +159,7 @@ export default function RootLayout({
       className={`${body.variable} ${condensed.variable} ${sinhala.variable} ${sinhalaDisplay.variable}`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: langBoot }} />
+        <script dangerouslySetInnerHTML={{ __html: boot }} />
         <link rel="preconnect" href="https://www.google.com" crossOrigin="" />
       </head>
       <body>

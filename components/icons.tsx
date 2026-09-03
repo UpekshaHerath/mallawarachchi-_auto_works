@@ -64,3 +64,16 @@ export const GearIcon = ({ size = 20, className }: P) => (
     <path d="M12 2.5v2.2M12 19.3v2.2M21.5 12h-2.2M4.7 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3" />
   </svg>
 );
+
+export const SunIcon = ({ size = 18, className }: P) => (
+  <svg {...base(size, className)}>
+    <circle cx="12" cy="12" r="4.2" />
+    <path d="M12 2.6v2.2M12 19.2v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" />
+  </svg>
+);
+
+export const MoonIcon = ({ size = 18, className }: P) => (
+  <svg {...base(size, className)}>
+    <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" />
+  </svg>
+);

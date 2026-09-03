@@ -14,7 +14,7 @@
   align-content: start;
 }
 .brandCol :global(.logo-mark) {
-  color: var(--amber);
+  color: var(--amber-ink);
 }
 .blurb {
   color: var(--muted);
@@ -51,10 +51,10 @@
 }
 .links a svg {
   flex: 0 0 auto;
-  color: var(--amber);
+  color: var(--amber-ink);
 }
 .links a:hover {
-  color: var(--amber);
+  color: var(--amber-ink);
 }
 .bottom {
   border-top: 1px solid var(--hairline-soft);
@@ -85,7 +85,7 @@
   z-index: 70;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background: rgba(11, 13, 16, 0.94);
+  background: var(--glass-solid);
   backdrop-filter: blur(14px);
   border-top: 1px solid var(--hairline);
   transform: translateY(110%);
@@ -114,14 +114,14 @@
   border-left: 1px solid var(--hairline);
 }
 .barBtn svg {
-  color: var(--amber);
+  color: var(--amber-ink);
 }
 .barCall {
   background: var(--amber);
-  color: #0a0a0a;
+  color: var(--on-accent);
 }
 .barCall svg {
-  color: #0a0a0a;
+  color: var(--on-accent);
 }
 
 @media (min-width: 760px) {
