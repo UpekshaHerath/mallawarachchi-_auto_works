@@ -5,6 +5,7 @@ import { LogoLockup } from "./Logo";
 import { OpenStatus } from "./OpenStatus";
 import { site } from "@/lib/site";
 import { PhoneIcon, PinIcon } from "./icons";
+import { ThemeToggle } from "./ThemeToggle";
 import s from "./Header.module.css";
 
 const NAV = [
@@ -84,6 +85,8 @@ export function Header() {
           </nav>
 
           <div className={s.actions}>
+            <ThemeToggle className={s.theme} />
+
             <div className={s.lang} role="group" aria-label="Language / භාෂාව">
               <button
                 type="button"

@@ -23,11 +23,11 @@
 }
 .bg img {
   animation: kenburns 26s var(--ease-out) 0.4s both;
-  filter: saturate(0.95) contrast(1.04) brightness(1.08);
+  filter: var(--hero-img-filter);
 }
 @media (min-width: 768px) {
   .bg img {
-    filter: saturate(0.95) contrast(1.04);
+    filter: var(--hero-img-filter-wide);
   }
 }
 @keyframes kenburns {
@@ -49,16 +49,21 @@
   position: absolute;
   inset: 0;
   z-index: -2;
+  --w1: color-mix(in srgb, var(--scrim-base) 84%, transparent);
+  --w2: color-mix(in srgb, var(--scrim-base) 42%, transparent);
+  /* the headline band: the amber accent line sits here and the engine bay
+     behind it is also amber, so it needs its own separation */
+  --w3: color-mix(in srgb, var(--scrim-base) 72%, transparent);
+  --w4: color-mix(in srgb, var(--scrim-base) 68%, transparent);
+  --w5: color-mix(in srgb, var(--scrim-base) 96%, transparent);
   background:
     linear-gradient(
       180deg,
-      rgba(6, 7, 10, 0.8) 0%,
-      rgba(6, 7, 10, 0.34) 18%,
-      /* the headline band: the amber accent line sits here and the engine bay
-         behind it is also amber, so it needs its own separation */
-      rgba(6, 7, 10, 0.62) 40%,
-      rgba(6, 7, 10, 0.58) 62%,
-      rgba(6, 7, 10, 0.95) 92%
+      var(--w1) 0%,
+      var(--w2) 18%,
+      var(--w3) 40%,
+      var(--w4) 62%,
+      var(--w5) 92%
     ),
     radial-gradient(70% 45% at 58% 72%, var(--amber-glow), transparent 62%);
 }
@@ -68,17 +73,17 @@
     background:
       linear-gradient(
         90deg,
-        rgba(6, 7, 10, 0.94) 0%,
-        rgba(6, 7, 10, 0.78) 32%,
-        rgba(6, 7, 10, 0.24) 62%,
-        rgba(6, 7, 10, 0.5) 100%
+        color-mix(in srgb, var(--scrim-base) 95%, transparent) 0%,
+        color-mix(in srgb, var(--scrim-base) 82%, transparent) 32%,
+        color-mix(in srgb, var(--scrim-base) 30%, transparent) 62%,
+        color-mix(in srgb, var(--scrim-base) 56%, transparent) 100%
       ),
       linear-gradient(
         180deg,
-        rgba(6, 7, 10, 0.72) 0%,
-        rgba(6, 7, 10, 0.12) 30%,
-        rgba(6, 7, 10, 0.55) 72%,
-        rgba(6, 7, 10, 0.92) 100%
+        color-mix(in srgb, var(--scrim-base) 76%, transparent) 0%,
+        color-mix(in srgb, var(--scrim-base) 16%, transparent) 30%,
+        color-mix(in srgb, var(--scrim-base) 60%, transparent) 72%,
+        color-mix(in srgb, var(--scrim-base) 94%, transparent) 100%
       ),
       radial-gradient(60% 60% at 74% 34%, var(--amber-glow), transparent 62%);
   }
@@ -88,7 +93,8 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  box-shadow: inset 0 0 190px 40px rgba(0, 0, 0, 0.85);
+  box-shadow: inset 0 0 190px 40px
+    color-mix(in srgb, var(--scrim-base) 78%, transparent);
 }
 
 /* ---------- roller-shutter intro ---------- */
@@ -101,10 +107,10 @@
   background:
     repeating-linear-gradient(
       180deg,
-      #16191e 0 16px,
-      #0d0f13 16px 18px,
-      #1d2128 18px 30px,
-      #090b0e 30px 32px
+      var(--steel) 0 16px,
+      var(--ink) 16px 18px,
+      var(--steel-2) 18px 30px,
+      var(--oil) 30px 32px
     );
   animation: rollup 1.15s cubic-bezier(0.72, 0, 0.2, 1) 0.25s forwards;
 }
@@ -113,8 +119,12 @@
   position: absolute;
   inset: auto 0 0 0;
   height: 12px;
-  background: linear-gradient(180deg, var(--amber-deep), #6b4a00);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    180deg,
+    var(--amber-deep),
+    color-mix(in srgb, var(--amber-deep) 55%, #000)
+  );
+  box-shadow: 0 10px 30px var(--shadow);
 }
 @keyframes rollup {
   0% {
@@ -134,7 +144,7 @@
   width: min(34vw, 26rem);
   height: min(34vw, 26rem);
   z-index: -1;
-  color: rgba(255, 193, 14, 0.11);
+  color: var(--amber-wash);
   animation: spin 44s linear infinite;
   pointer-events: none;
 }
@@ -163,20 +173,20 @@
   align-self: start;
   justify-self: start;
   padding: 0.4rem 0.9rem 0.4rem 0.4rem;
-  border: 1px solid rgba(255, 193, 14, 0.35);
-  background: rgba(255, 193, 14, 0.07);
+  border: 1px solid var(--amber-line);
+  background: var(--amber-wash-soft);
   backdrop-filter: blur(4px);
   font-family: var(--f-display);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--amber-ink);
   animation: fadeUp 0.7s var(--ease-out) 1.15s both;
 }
 .estNum {
   background: var(--amber);
-  color: #0a0a0a;
+  color: var(--on-accent);
   padding: 0.2rem 0.55rem;
   font-size: 1rem;
   letter-spacing: 0;
@@ -227,7 +237,7 @@
 }
 
 .accent {
-  color: var(--amber);
+  color: var(--amber-ink);
   position: relative;
 }
 /* single amber sweep across the accent word */
@@ -281,7 +291,7 @@
 .card {
   justify-self: start;
   min-width: min(100%, 21rem);
-  background: rgba(11, 13, 16, 0.72);
+  background: color-mix(in srgb, var(--ink) 76%, transparent);
   backdrop-filter: blur(10px);
   border: 1px solid var(--hairline);
   border-top: 3px solid var(--amber);
@@ -298,7 +308,7 @@
   color: var(--paper-dim);
 }
 .cardRow svg {
-  color: var(--amber);
+  color: var(--amber-ink);
   flex: 0 0 auto;
 }
 .dot {
@@ -306,12 +316,12 @@
   height: 8px;
   border-radius: 50%;
   background: var(--go);
-  box-shadow: 0 0 0 4px rgba(55, 214, 122, 0.16);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--go) 22%, transparent);
   flex: 0 0 auto;
 }
 .dotShut {
   background: var(--oxide);
-  box-shadow: 0 0 0 4px rgba(194, 65, 12, 0.16);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--oxide) 22%, transparent);
 }
 
 /* ---------- foot strip ---------- */
@@ -342,7 +352,7 @@
 }
 .statNum em {
   font-style: normal;
-  color: var(--amber);
+  color: var(--amber-ink);
 }
 .statLabel {
   font-size: 0.76rem;
@@ -377,7 +387,7 @@
   content: "";
   width: 1px;
   height: 3.5rem;
-  background: linear-gradient(var(--amber), transparent);
+  background: linear-gradient(var(--amber-ink), transparent);
   animation: cue 2.2s ease-in-out infinite;
 }
 @keyframes cue {

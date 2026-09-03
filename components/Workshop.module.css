@@ -21,7 +21,7 @@
   content: "";
   position: absolute;
   inset: 14px -14px -14px 14px;
-  border: 1px solid rgba(255, 193, 14, 0.35);
+  border: 1px solid var(--amber-line);
   z-index: -1;
 }
 
@@ -37,9 +37,9 @@
   text-align: center;
   gap: 0.1rem;
   background: var(--amber);
-  color: #0a0a0a;
+  color: var(--on-accent);
   border-radius: 50%;
-  box-shadow: 0 24px 50px -22px #000;
+  box-shadow: 0 24px 50px -22px var(--shadow);
   transform: rotate(-9deg);
   font-family: var(--f-display);
   text-transform: uppercase;
@@ -67,7 +67,7 @@
   max-width: 58ch;
 }
 .pull {
-  border-left: 3px solid var(--amber);
+  border-left: 3px solid var(--amber-ink);
   padding-left: 1.1rem;
   font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
   color: var(--paper);
@@ -89,7 +89,7 @@
   font-size: 0.97rem;
 }
 .facts svg {
-  color: var(--amber);
+  color: var(--amber-ink);
   margin-top: 0.2rem;
 }
 
@@ -115,14 +115,14 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--paper-dim);
-  background: rgba(255, 255, 255, 0.015);
+  background: var(--tint-faint);
 }
 :global([data-lang="si"]) .chip {
   font-family: var(--f-si-display);
 }
 .chipHot {
-  border-color: var(--amber);
-  color: var(--amber);
+  border-color: var(--amber-ink);
+  color: var(--amber-ink);
 }
 .bandNote {
   color: var(--muted);

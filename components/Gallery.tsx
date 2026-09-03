@@ -112,7 +112,7 @@ export function Gallery() {
 
       {current && idx !== null && (
         <div
-          className={s.box}
+          className={`${s.box} on-dark`}
           role="dialog"
           aria-modal="true"
           aria-label="Workshop photo"

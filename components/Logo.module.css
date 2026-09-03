@@ -15,7 +15,7 @@
 
 .mark {
   flex: 0 0 auto;
-  color: var(--amber);
+  color: var(--amber-ink);
   overflow: visible;
 }
 
@@ -62,7 +62,7 @@ a:focus-visible .mark .gear {
   font-size: 0.72rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--amber-ink);
   white-space: nowrap;
 }
 .subCompact {
@@ -74,7 +74,7 @@ a:focus-visible .mark .gear {
 .subRule {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, var(--amber), rgba(255, 193, 14, 0.15));
+  background: linear-gradient(90deg, var(--amber-ink), transparent);
   margin-inline-end: 0.15rem;
 }
 
