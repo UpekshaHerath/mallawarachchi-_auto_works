@@ -5,91 +5,23 @@
    ========================================================================== */
 
 /*
- * Two themes off one set of names. The dark set is the default and is also
- * re-declared on `.on-dark`, the escape hatch for regions that stay dark in
- * both themes — the lightbox, where a photo is the whole point — since a
- * custom property set on that element wins for its whole subtree no matter
- * what the root says. The hero is NOT one of those: it takes the theme like
- * everything else, washing its photo with paper instead of oil.
+ * Two themes off one set of names. Paper is the default — it is what :root
+ * carries and what a JS-less visitor gets. The dark set hangs off
+ * `[data-theme="dark"]`, which the boot script in app/layout.tsx stamps from
+ * the stored choice, or from the OS preference when nobody has chosen yet;
+ * keeping the OS out of the CSS means one dark block, not two.
+ *
+ * `.on-dark` carries the same dark values for regions that stay dark whatever
+ * the theme — the lightbox, where a photo is the whole point. A custom
+ * property set on that element wins for its whole subtree no matter what the
+ * root says. The hero is NOT one of those: it takes the theme like everything
+ * else, washing its photo with paper instead of oil.
  *
  * Anything that flips lives here. Components reference the names only, so a
  * theme is a palette swap, not a second stylesheet.
  */
-:root,
-.on-dark {
+:root {
   /* surfaces */
-  --oil: #06070a;
-  --ink: #0b0d10;
-  --steel: #14171c;
-  --steel-2: #1b1f26;
-  --hairline: #262c35;
-  --hairline-soft: #1e232b;
-
-  /* paper / text */
-  --paper: #f3efe6;
-  --paper-dim: #cfc9bd;
-  --muted: #8d949f;
-  --muted-2: #6b727d;
-
-  /* signal colours */
-  --amber: #ffc10e;
-  --amber-deep: #d99b00;
-  --amber-glow: rgba(255, 193, 14, 0.28);
-  /* the hero photo is washed with this, not with a fixed black: it is what
-     turns the same frame into a dark backdrop or a bright one */
-  --scrim-base: #06070a;
-  --hero-img-filter: saturate(0.95) contrast(1.04) brightness(1.08);
-  --hero-img-filter-wide: saturate(0.95) contrast(1.04);
-  --plate-line: rgba(0, 0, 0, 0.3);
-  /* Amber as *ink*. On dark it is the fill colour; on paper that same yellow
-     runs at about 1.7:1, so the light theme swaps in a burnt version and
-     every amber word, icon and outline follows. Fills keep --amber. */
-  --amber-ink: var(--amber);
-  --on-accent: #0a0a0a;
-  /* amber as a wash and as a hairline; both need more body on paper */
-  --amber-wash: rgba(255, 193, 14, 0.08);
-  --amber-wash-soft: rgba(255, 193, 14, 0.04);
-  --amber-line: rgba(255, 193, 14, 0.35);
-  --oxide: #c2410c;
-  --go: #37d67a;
-  --danger: #ff8a6a;
-  --focus: var(--amber);
-
-  /* washes: a film of the opposite value over whatever is behind */
-  --tint: rgba(255, 255, 255, 0.03);
-  --tint-faint: rgba(255, 255, 255, 0.015);
-  --tint-strong: rgba(255, 255, 255, 0.06);
-  --etch: rgba(255, 255, 255, 0.028);
-  --etch-2: rgba(255, 255, 255, 0.05);
-  --etch-3: rgba(255, 255, 255, 0.09);
-
-  --glass: rgba(11, 13, 16, 0.88);
-  --glass-solid: rgba(11, 13, 16, 0.94);
-  --field-bg: var(--oil);
-  --shadow: rgba(0, 0, 0, 0.9);
-  /* hazard tape reads as tape because the dark band is black in both themes */
-  --hazard-band: #06070a;
-
-  /* photo treatment — dark cards want the photo pulled down, paper ones don't */
-  --fig-filter: grayscale(0.75) contrast(1.06) brightness(0.75);
-  --fig-filter-hover: grayscale(0) contrast(1.02) brightness(0.9);
-  --cell-filter: grayscale(0.35) brightness(0.86) contrast(1.05);
-  --map-filter: grayscale(0.15) contrast(1.05);
-  --grain-opacity: 0.4;
-  --grain-blend: overlay;
-
-  color-scheme: dark;
-}
-
-/*
- * Light theme. Same signboard palette read the other way up: job-card paper
- * instead of black steel, amber kept for fills and burnt for ink.
- *
- * Declared twice on purpose — once for the explicit choice, once for the
- * system preference when no choice has been made — because a media query
- * cannot be folded into a selector list. Keep the two blocks in step.
- */
-:root[data-theme="light"] {
   --oil: #f2efe7;
   --ink: #fbf9f4;
   --steel: #efebe1;
@@ -97,18 +29,28 @@
   --hairline: #cbc4b3;
   --hairline-soft: #ded8ca;
 
+  /* ink / text — the names are kept from the dark original, where the type
+     was the colour of paper; here they simply read the other way up */
   --paper: #14171b;
   --paper-dim: #3c424b;
   --muted: #5d646e;
   --muted-2: #787f8a;
 
+  /* signal colours */
+  --amber: #ffc10e;
   --amber-deep: #a87700;
   --amber-glow: rgba(217, 155, 0, 0.18);
+  /* the hero photo is washed with this, not with a fixed black: it is what
+     turns the same frame into a bright backdrop or a dark one */
   --scrim-base: #f6f3ec;
   --hero-img-filter: saturate(0.8) contrast(0.94) brightness(1.16);
   --hero-img-filter-wide: saturate(0.82) contrast(0.94) brightness(1.1);
   --plate-line: rgba(15, 18, 22, 0.07);
+  /* Amber as *ink*. On paper the signboard yellow runs at about 1.7:1, so
+     every amber word, icon and outline uses a burnt version; solid fills
+     (buttons, badges, the marquee) keep --amber. */
   --amber-ink: #8a5a00;
+  --on-accent: #0a0a0a;
   --amber-wash: rgba(217, 155, 0, 0.16);
   --amber-wash-soft: rgba(217, 155, 0, 0.09);
   --amber-line: rgba(138, 90, 0, 0.42);
@@ -117,6 +59,7 @@
   --danger: #b3300b;
   --focus: #8a5a00;
 
+  /* washes: a film of the opposite value over whatever is behind */
   --tint: rgba(15, 18, 22, 0.035);
   --tint-faint: rgba(15, 18, 22, 0.018);
   --tint-strong: rgba(15, 18, 22, 0.06);
@@ -128,8 +71,11 @@
   --glass-solid: rgba(248, 246, 240, 0.95);
   --field-bg: #ffffff;
   --shadow: rgba(20, 23, 28, 0.3);
+  /* hazard tape reads as tape because the dark band is black in both themes */
   --hazard-band: #101318;
 
+  /* photo treatment — paper cards want the photo left bright, dark ones
+     want it pulled down */
   --fig-filter: grayscale(0.45) contrast(1.02) brightness(0.99);
   --fig-filter-hover: grayscale(0) contrast(1.02) brightness(1.03);
   --cell-filter: grayscale(0.22) brightness(1.01) contrast(1.02);
@@ -140,57 +86,57 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --oil: #f2efe7;
-    --ink: #fbf9f4;
-    --steel: #efebe1;
-    --steel-2: #e5e0d3;
-    --hairline: #cbc4b3;
-    --hairline-soft: #ded8ca;
+/* Black steel: the original signboard reading, now opt-in. */
+:root[data-theme="dark"],
+.on-dark {
+  --oil: #06070a;
+  --ink: #0b0d10;
+  --steel: #14171c;
+  --steel-2: #1b1f26;
+  --hairline: #262c35;
+  --hairline-soft: #1e232b;
 
-    --paper: #14171b;
-    --paper-dim: #3c424b;
-    --muted: #5d646e;
-    --muted-2: #787f8a;
+  --paper: #f3efe6;
+  --paper-dim: #cfc9bd;
+  --muted: #8d949f;
+  --muted-2: #6b727d;
 
-    --amber-deep: #a87700;
-    --amber-glow: rgba(217, 155, 0, 0.18);
-    --scrim-base: #f6f3ec;
-    --hero-img-filter: saturate(0.8) contrast(0.94) brightness(1.16);
-    --hero-img-filter-wide: saturate(0.82) contrast(0.94) brightness(1.1);
-    --plate-line: rgba(15, 18, 22, 0.07);
-    --amber-ink: #8a5a00;
-    --amber-wash: rgba(217, 155, 0, 0.16);
-    --amber-wash-soft: rgba(217, 155, 0, 0.09);
-    --amber-line: rgba(138, 90, 0, 0.42);
-    --oxide: #b23c0b;
-    --go: #157f3c;
-    --danger: #b3300b;
-    --focus: #8a5a00;
+  --amber-deep: #d99b00;
+  --amber-glow: rgba(255, 193, 14, 0.28);
+  --scrim-base: #06070a;
+  --hero-img-filter: saturate(0.95) contrast(1.04) brightness(1.08);
+  --hero-img-filter-wide: saturate(0.95) contrast(1.04);
+  --plate-line: rgba(0, 0, 0, 0.3);
+  --amber-ink: var(--amber);
+  --amber-wash: rgba(255, 193, 14, 0.08);
+  --amber-wash-soft: rgba(255, 193, 14, 0.04);
+  --amber-line: rgba(255, 193, 14, 0.35);
+  --oxide: #c2410c;
+  --go: #37d67a;
+  --danger: #ff8a6a;
+  --focus: var(--amber);
 
-    --tint: rgba(15, 18, 22, 0.035);
-    --tint-faint: rgba(15, 18, 22, 0.018);
-    --tint-strong: rgba(15, 18, 22, 0.06);
-    --etch: rgba(15, 18, 22, 0.05);
-    --etch-2: rgba(15, 18, 22, 0.07);
-    --etch-3: rgba(15, 18, 22, 0.11);
+  --tint: rgba(255, 255, 255, 0.03);
+  --tint-faint: rgba(255, 255, 255, 0.015);
+  --tint-strong: rgba(255, 255, 255, 0.06);
+  --etch: rgba(255, 255, 255, 0.028);
+  --etch-2: rgba(255, 255, 255, 0.05);
+  --etch-3: rgba(255, 255, 255, 0.09);
 
-    --glass: rgba(248, 246, 240, 0.88);
-    --glass-solid: rgba(248, 246, 240, 0.95);
-    --field-bg: #ffffff;
-    --shadow: rgba(20, 23, 28, 0.3);
-    --hazard-band: #101318;
+  --glass: rgba(11, 13, 16, 0.88);
+  --glass-solid: rgba(11, 13, 16, 0.94);
+  --field-bg: var(--oil);
+  --shadow: rgba(0, 0, 0, 0.9);
+  --hazard-band: #06070a;
 
-    --fig-filter: grayscale(0.45) contrast(1.02) brightness(0.99);
-    --fig-filter-hover: grayscale(0) contrast(1.02) brightness(1.03);
-    --cell-filter: grayscale(0.22) brightness(1.01) contrast(1.02);
-    --map-filter: none;
-    --grain-opacity: 0.14;
-    --grain-blend: multiply;
+  --fig-filter: grayscale(0.75) contrast(1.06) brightness(0.75);
+  --fig-filter-hover: grayscale(0) contrast(1.02) brightness(0.9);
+  --cell-filter: grayscale(0.35) brightness(0.86) contrast(1.05);
+  --map-filter: grayscale(0.15) contrast(1.05);
+  --grain-opacity: 0.4;
+  --grain-blend: overlay;
 
-    color-scheme: light;
-  }
+  color-scheme: dark;
 }
 
 /* Type and rhythm are theme-independent. */

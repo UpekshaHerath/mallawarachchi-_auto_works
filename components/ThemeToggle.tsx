@@ -6,19 +6,25 @@ import { SunIcon, MoonIcon } from "./icons";
 type Theme = "dark" | "light";
 
 const KEY = "maw-theme";
+const DARK_QUERY = "(prefers-color-scheme: dark)";
 
-/** What the page is actually painting right now: the choice if one was made,
- *  the OS preference otherwise. Mirrors the boot script in app/layout.tsx. */
+/** What the page is actually painting right now. The boot script in
+ *  app/layout.tsx stamps data-theme before first paint — from the stored
+ *  choice if there is one, from the OS preference otherwise — so reading the
+ *  attribute is the whole answer. */
 function current(): Theme {
-  const set = document.documentElement.getAttribute("data-theme");
-  if (set === "light" || set === "dark") return set;
-  return window.matchMedia("(prefers-color-scheme: light)").matches
-    ? "light"
-    : "dark";
+  return document.documentElement.getAttribute("data-theme") === "dark"
+    ? "dark"
+    : "light";
 }
 
-/* Address-bar / task-switcher colour has to follow the theme too, and the
-   static <meta> pair only covers the OS preference, not an explicit choice. */
+function apply(theme: Theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  paintChrome(theme);
+}
+
+/* Address-bar / task-switcher colour has to follow the theme too; the static
+   <meta> in app/layout.tsx only carries the paper default. */
 function paintChrome(theme: Theme) {
   document
     .querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')
@@ -29,33 +35,49 @@ function paintChrome(theme: Theme) {
   document.head.appendChild(meta);
 }
 
+function stored(): Theme | null {
+  try {
+    const v = localStorage.getItem(KEY);
+    return v === "light" || v === "dark" ? v : null;
+  } catch {
+    return null;
+  }
+}
+
 export function ThemeToggle({ className }: { className?: string }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
+  // The server renders the paper default; the real theme is applied by the
+  // boot script before paint, so the button and the chrome catch up on mount.
   useEffect(() => {
-    setTheme(current());
+    const now = current();
+    setTheme(now);
+    paintChrome(now);
+  }, []);
 
-    // With no stored choice the site follows the OS, including a change made
-    // while the tab is open.
-    const mq = window.matchMedia("(prefers-color-scheme: light)");
-    const onSystem = () => {
-      if (!document.documentElement.hasAttribute("data-theme")) {
-        setTheme(mq.matches ? "light" : "dark");
-      }
+  // Until someone picks a side, the OS keeps driving: flipping the system
+  // theme while the tab is open flips the page with it.
+  useEffect(() => {
+    const mq = window.matchMedia(DARK_QUERY);
+    const onChange = (e: MediaQueryListEvent) => {
+      if (stored()) return;
+      const next: Theme = e.matches ? "dark" : "light";
+      apply(next);
+      setTheme(next);
     };
-    mq.addEventListener("change", onSystem);
-    return () => mq.removeEventListener("change", onSystem);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
   }, []);
 
   const flip = () => {
     const next: Theme = current() === "light" ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", next);
+    apply(next);
     setTheme(next);
-    paintChrome(next);
+    document.documentElement.setAttribute("data-theme-source", "user");
     try {
       localStorage.setItem(KEY, next);
     } catch {
-      /* private mode — the choice just won't persist */
+      /* private mode — the choice just won't persist, so the OS keeps driving */
     }
   };
 
